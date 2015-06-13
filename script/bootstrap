@@ -2,9 +2,11 @@
 #
 # bootstrap installs all of the things
 
-cd "$(dirname "${BASH_SOURCE[0]}")"
+cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd)
 set -e
+echo ''
+echo $DOTFILES_ROOT
 echo ''
 
 info () {
@@ -50,5 +52,3 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	source ~/.zshrc;
 fi;
 unset link_files;
-
-

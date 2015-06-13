@@ -1,0 +1,32 @@
+"*":
+  editor:
+    showIndentGuide: true
+    fontFamily: "Menlo"
+    fontSize: 14
+    invisibles: {}
+  core:
+    ignoredNames: [
+      ".bundle"
+      ".git"
+      "log"
+      "repositories"
+      "tmp"
+      "vendor"
+    ]
+    themes: [
+      "atom-dark-ui"
+      "darkula-syntax"
+    ]
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+    ]
+  "spell-check":
+    grammars: [
+      "text.plain"
+      "source.gfm"
+      "text.git-commit"
+    ]
+  welcome:
+    showOnStartup: false
