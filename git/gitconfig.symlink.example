@@ -22,6 +22,9 @@
 	# Checkout
 	co = checkout
 
+	# Get a quick status update
+	st = status
+
 	# Remove staged changes
 	unstage = reset HEAD
 
