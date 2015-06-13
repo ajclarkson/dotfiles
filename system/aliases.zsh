@@ -27,15 +27,19 @@ alias ip="curl icanhazip.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# Flush Directory Service cache
-alias dnsflush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
-# Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+# Mac Specific aliases
+if [[ $(uname) = 'Darwin' ]]; then
+  # Flush Directory Service cache
+  alias fdns="sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches"
 
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+  # Clean up LaunchServices to remove duplicates in the “Open With” menu
+  alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+  # Show/hide hidden files in Finder
+  alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+  alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+  # Lock the screen (when going AFK)
+  alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+fi
