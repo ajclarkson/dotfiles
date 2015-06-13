@@ -1,0 +1,54 @@
+#!/bin/sh
+#
+# bootstrap installs all of the things
+
+cd "$(dirname "${BASH_SOURCE[0]}")"
+DOTFILES_ROOT=$(pwd)
+set -e
+echo ''
+
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+function link_files() {
+	info 'Installing dotfiles'
+	for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+	do
+		dst="$HOME/.$(basename "${src%.*}")"
+		info "Removing Old $dst"
+		rm -rf $dst
+		ln -s $src $dst
+		success "Linked $src to $dst"
+	done
+	dir=~/.extras
+	if [ ! -d "$dir" ] ; then
+		info 'Creating stub ~/.extras directory'
+    mkdir "$dir"
+	fi
+	unset dir
+
+	success 'dotfiles installed'
+}
+
+read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	info 'Updating dotfiles to latest version';
+	#git pull origin master;
+	link_files;
+	source ~/.zshrc;
+fi;
+unset link_files;
+
+
