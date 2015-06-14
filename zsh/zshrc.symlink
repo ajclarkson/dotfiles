@@ -16,3 +16,15 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
   source $file
 done
+
+# load compinit for autocomplete
+autoload -U compinit
+compinit
+
+# load completion files
+for file in ${(M)config_files:#*/completion.zsh)}
+do
+  source $file
+done
+
+unset config_files
