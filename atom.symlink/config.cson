@@ -14,7 +14,7 @@
       "vendor"
     ]
     themes: [
-      "atom-dark-ui"
+      "one-dark-ui"
       "darkula-syntax"
     ]
     disabledPackages: [

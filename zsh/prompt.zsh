@@ -46,11 +46,16 @@ need_push () {
   fi
 }
 
+function hg_prompt_info {
+  hg prompt --angle-brackets "<%{$reset_color%}@%{$fg[yellow]%}\
+%{$fg[magenta]%}<branch>%{$reset_color%}> " 2>/dev/null
+}
+
 directory_name() {
   echo "%{$fg_bold[cyan]%}%3/%\/%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'$(directory_name) $(hg_prompt_info)$(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }

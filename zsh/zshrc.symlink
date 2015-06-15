@@ -28,3 +28,10 @@ do
 done
 
 unset config_files
+
+# load custom extras
+
+if [ -f "~/.extras/zshrc.extras" ];
+then
+  source ~/.extras/zshrc.extras
+fi

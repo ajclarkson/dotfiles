@@ -1,0 +1,21 @@
+[ui]
+username=adam.clarkson
+merge = idea
+
+[extensions]
+mq=
+color=
+graphlog=
+purge=
+prompt=~/lib/hg-prompt/prompt.py
+hgshelve=~/lib/hgshelve/hgshelve.py
+
+[merge-tools]
+idea =
+idea.gui = True
+idea.args = merge $local $base $other $output
+idea.priority = 1000
+idea.executable = /Applications/IntelliJ\ IDEA\ 14.app/Contents/MacOS/idea
+
+
+%include ~/.extras/hgrc.extras
