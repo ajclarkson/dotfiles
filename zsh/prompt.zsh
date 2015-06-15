@@ -20,9 +20,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo "@%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
     else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo "@%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
     fi
   fi
 }
@@ -52,10 +52,10 @@ function hg_prompt_info {
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%3/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}[%~]%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name) $(hg_prompt_info)$(git_dirty)$(need_push)\n› '
+export PROMPT=$'$(directory_name)$(hg_prompt_info)$(git_dirty)$(need_push)%{$fg[red]%}» '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
