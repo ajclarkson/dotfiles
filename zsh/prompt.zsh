@@ -42,13 +42,25 @@ need_push () {
   then
     echo ""
   else
-    echo "%{$fg[magenta]%}⌃%{$reset_color%} "
+    echo "%{$fg[magenta]%}⌃%{$reset_color%}"
   fi
 }
 
 in_hg() {
   if [[ -d .hg ]] || $(hg summary > /dev/null 2>&1); then
     echo 1
+  fi
+}
+hg_unpushed() {
+  hg prompt "{outgoing changes{outgoing}}"
+}
+hg_need_push() {
+  if [ $(in_hg) ]
+  then
+    if [[ $(hg_unpushed) != "" ]]
+    then
+      echo "%{$fg[magenta]%}⌃%{$reset_color%}"
+    fi
   fi
 }
 
@@ -65,14 +77,14 @@ hg_dirty() {
 }
 
 hg_prompt_info() {
-  hg prompt --angle-brackets "<%{$reset_color%}%{$fg_bold[red]%}[<branch>]%{$reset_color%}>" 2>/dev/null
+  hg prompt --angle-brackets "<[<branch>]>" 2>/dev/null
 }
 
 directory_name() {
   echo "%{$fg_bold[cyan]%}[%~]%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name)$(hg_dirty)$(git_dirty)$(need_push)%{$fg[red]%}» '
+export PROMPT=$'$(directory_name)$(hg_dirty)$(hg_need_push)$(git_dirty)$(need_push)%{$fg[red]%}» '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
