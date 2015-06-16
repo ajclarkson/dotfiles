@@ -40,15 +40,15 @@ unpushed () {
 need_push () {
   if [[ $(unpushed) == "" ]]
   then
-    echo " "
+    echo ""
   else
     echo "%{$fg[magenta]%}⌃%{$reset_color%} "
   fi
 }
 
 function hg_prompt_info {
-  hg prompt --angle-brackets "<%{$reset_color%}@%{$fg[yellow]%}\
-%{$fg[magenta]%}<branch>%{$reset_color%}> " 2>/dev/null
+  hg prompt --angle-brackets "<%{$reset_color%}%{$fg[yellow]%}\
+%{$fg[magenta]%}[<branch>]%{$reset_color%}> " 2>/dev/null
 }
 
 directory_name() {
