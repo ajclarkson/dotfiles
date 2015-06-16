@@ -46,9 +46,27 @@ need_push () {
   fi
 }
 
-function hg_prompt_info {
+in_hg() {
+  if [[ -d .hg ]] || $(hg summary > /dev/null 2>&1); then
+    echo 1
+  fi
+}
+
+hg_dirty() {
+  if [ $(in_hg) ]; then
+   hg status 2> /dev/null | command grep -Eq '^\s*[ACDIM!?L]'
+    if [ $pipestatus[-1] -eq 0 ]; then
+      echo "%{$fg_bold[red]%}[<branch>]%{$reset_color%}"
+    else
+      echo "%{$fg_bold[green]%}[<branch>]%{$reset_color%}"
+    fi
+ fi
+
+}
+
+hg_prompt_info {
   hg prompt --angle-brackets "<%{$reset_color%}%{$fg[yellow]%}\
-%{$fg[magenta]%}[<branch>]%{$reset_color%}> " 2>/dev/null
+$(hg_dirty)>" 2>/dev/null
 }
 
 directory_name() {
