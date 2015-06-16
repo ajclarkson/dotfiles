@@ -56,24 +56,23 @@ hg_dirty() {
   if [ $(in_hg) ]; then
    hg status 2> /dev/null | command grep -Eq '^\s*[ACDIM!?L]'
     if [ $pipestatus[-1] -eq 0 ]; then
-      echo "%{$fg_bold[red]%}[<branch>]%{$reset_color%}"
+      echo "%{$fg_bold[red]%}$(hg_prompt_info)%{$reset_color%}"
     else
-      echo "%{$fg_bold[green]%}[<branch>]%{$reset_color%}"
+      echo "%{$fg_bold[green]%}$(hg_prompt_info)%{$reset_color%}"
     fi
  fi
 
 }
 
-hg_prompt_info {
-  hg prompt --angle-brackets "<%{$reset_color%}%{$fg[yellow]%}\
-$(hg_dirty)>" 2>/dev/null
+hg_prompt_info() {
+  hg prompt --angle-brackets "<%{$reset_color%}%{$fg_bold[red]%}[<branch>]%{$reset_color%}>" 2>/dev/null
 }
 
 directory_name() {
   echo "%{$fg_bold[cyan]%}[%~]%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name)$(hg_prompt_info)$(git_dirty)$(need_push)%{$fg[red]%}» '
+export PROMPT=$'$(directory_name)$(hg_dirty)$(git_dirty)$(need_push)%{$fg[red]%}» '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
