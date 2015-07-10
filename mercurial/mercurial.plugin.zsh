@@ -21,6 +21,8 @@ alias hgsl='hg log --limit 20 --template "{node|short} | {date|isodatesec} | {au
 alias hgca='hg qimport -r tip ; hg qrefresh -e ; hg qfinish tip'
 # list unresolved files (since hg does not list unmerged files in the status command)
 alias hgun='hg resolve --list'
+# list all shevles
+alias hgsh='ls -la .hg/shelves'
 
 function in_hg() {
   if [[ -d .hg ]] || $(hg summary > /dev/null 2>&1); then
