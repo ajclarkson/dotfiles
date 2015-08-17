@@ -31,7 +31,11 @@ unset config_files
 
 # load custom extras
 
-if [ -f "~/.extras/zshrc.extras" ];
-then
-  source ~/.extras/zshrc.extras
+extras=~/.extras
+extraConf=($extras/**/*.zsh)
+if [ -d "$dir" ] ; then
+  for file in ${extraConf}
+  do
+    source $file
+  done
 fi
