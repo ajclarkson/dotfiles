@@ -2,7 +2,6 @@
   editor:
     showIndentGuide: true
     fontFamily: "Menlo"
-    fontSize: 14
     invisibles: {}
   core:
     ignoredNames: [
