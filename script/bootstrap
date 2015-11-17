@@ -37,6 +37,7 @@ function link_files() {
 	if [ ! -d "$dir" ] ; then
 		info 'Creating stub ~/.extras directory'
     mkdir "$dir"
+    touch "$dir/machine-specific.zsh"
 	fi
 	unset dir
 
