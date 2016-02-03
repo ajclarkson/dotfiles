@@ -1,9 +1,11 @@
 "*":
-  editor:
-    showIndentGuide: true
-    fontFamily: "Menlo"
-    invisibles: {}
   core:
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+      "wrap-guide"
+    ]
     ignoredNames: [
       ".bundle"
       ".git"
@@ -16,11 +18,10 @@
       "one-dark-ui"
       "darkula-syntax"
     ]
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
+  editor:
+    fontFamily: "Menlo"
+    invisibles: {}
+    preferredLineLength: 1
   "spell-check":
     grammars: [
       "text.plain"

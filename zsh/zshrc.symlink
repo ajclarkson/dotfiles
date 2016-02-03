@@ -33,9 +33,8 @@ unset config_files
 
 extras=~/.extras
 extraConf=($extras/**/*.zsh)
-if [ -d "$dir" ] ; then
-  for file in ${extraConf}
-  do
-    source $file
-  done
-fi
+
+for file in ${extraConf}
+do
+  source ${file}
+done
