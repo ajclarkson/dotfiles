@@ -15,8 +15,8 @@
       "vendor"
     ]
     themes: [
-      "one-dark-ui"
-      "darkula-syntax"
+      "atom-dark-ui"
+      "atom-dark-syntax"
     ]
   editor:
     fontFamily: "Menlo"
