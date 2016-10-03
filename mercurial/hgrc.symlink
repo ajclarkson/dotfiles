@@ -7,8 +7,6 @@ mq=
 color=
 graphlog=
 purge=
-prompt=~/lib/hg-prompt/prompt.py
-hgshelve=~/lib/hgshelve/hgshelve.py
 
 [merge-tools]
 idea =
