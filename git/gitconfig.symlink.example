@@ -23,7 +23,7 @@
 	co = checkout
 
 	# Get a quick status update
-	st = status
+	st = status --short --branch
 
 	# Remove staged changes
 	unstage = reset HEAD
@@ -46,6 +46,9 @@
 	# Show outgoing/incoming changes
 	out = log @{u}..
 	in = log ..@{u}
+
+	# Have a nicer graphical log output
+	grog = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [push]
 	default = simple
