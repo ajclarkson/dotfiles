@@ -81,12 +81,12 @@ hg_prompt_info() {
 }
 
 directory_name() {
-  echo "%{$fg_bold[cyan]%}[%~]%{$reset_color%}"
+  echo "%{$fg_bold[yellow]%}[%~]%{$reset_color%}"
 }
 
 export PROMPT=$'$(directory_name)$(hg_dirty)$(hg_need_push)$(git_dirty)$(need_push)%{$fg[red]%}» '
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
+  export RPROMPT="%{$fg_bold[black]%}%{$reset_color%}"
 }
 
 precmd() {
