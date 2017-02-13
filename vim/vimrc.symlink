@@ -1,0 +1,35 @@
+
+" Launch Control {{{
+call pathogen#infect()
+call pathogen#helptags()
+" }}}
+" Colors {{{
+syntax enable
+set background=dark
+colorscheme material-theme
+" }}}
+" Spacing & Tabs {{{
+set tabstop=4
+set softtabstop=4
+set expandtab
+" }}}
+" UI Config {{{
+set number
+set showcmd
+set wildmenu
+set showmatch
+" }}}
+" Folding {{{
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+nnoremap <space> za
+set foldmethod=indent
+"}}}
+" CtrlP {{{
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+"}}}
+set modelines=1
+" vim:foldmethod=marker:foldlevel=0
