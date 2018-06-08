@@ -46,45 +46,16 @@ need_push () {
   fi
 }
 
-in_hg() {
-  if [[ -d .hg ]] || $(hg summary > /dev/null 2>&1); then
-    echo 1
-  fi
-}
-hg_unpushed() {
-  hg prompt "{outgoing changes{outgoing}}"
-}
-hg_need_push() {
-  if [ $(in_hg) ]
-  then
-    if [[ $(hg_unpushed) != "" ]]
-    then
-      echo "%{$fg[magenta]%}⌃%{$reset_color%}"
-    fi
-  fi
-}
 
-hg_dirty() {
-  if [ $(in_hg) ]; then
-   hg status 2> /dev/null | command grep -Eq '^\s*[ACDIM!?L]'
-    if [ $pipestatus[-1] -eq 0 ]; then
-      echo "%{$fg_bold[red]%}$(hg_prompt_info)%{$reset_color%}"
-    else
-      echo "%{$fg_bold[green]%}$(hg_prompt_info)%{$reset_color%}"
-    fi
- fi
-
+construct_dir() {
+    echo ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~}
 }
-
-hg_prompt_info() {
-  hg prompt --angle-brackets "<[<branch>]>" 2>/dev/null
-}
-
 directory_name() {
-  echo "%{$fg_bold[yellow]%}[%~]%{$reset_color%}"
+  #echo "%{$fg_bold[yellow]%}[%~]%{$reset_color%}"
+  echo "%{$fg_bold[yellow]%}$(construct_dir)/%{$reset_color%}"
 }
 
-export PROMPT=$'$(directory_name)$(hg_dirty)$(hg_need_push)$(git_dirty)$(need_push)%{$fg[red]%}» '
+export PROMPT=$'$(directory_name)$(git_dirty)$(need_push)%{$fg[red]%}» '
 set_prompt () {
   export RPROMPT="%{$fg_bold[black]%}%{$reset_color%}"
 }
