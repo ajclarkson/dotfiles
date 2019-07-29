@@ -21,6 +21,8 @@ alias d="cd ~/Dropbox"
 alias thesis="cd ~/Cloud/PhD/Thesis"
 alias p="cd ~/Projects"
 alias g="git"
+alias w="cd ~/workspace"
+alias wc="cd ~/workspace/webshop-cloud"
 
 # IP addresses
 alias ip="curl icanhazip.com"
