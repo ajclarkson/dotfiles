@@ -15,9 +15,12 @@ git_branch() {
 
 git_status_block() {
   local git_status="";
-  local INDEX=$($git status --porcelain 2> /dev/null);
+  local INDEX=$($git status --porcelain -b 2> /dev/null);
 
-  git_status=$need_push$git_status
+  local is_ahead=false
+  if $(echo "$INDEX" | command grep '^## [^ ]\+ .*ahead' &> /dev/null); then
+    git_status="⇡$git_status"
+  fi
 
   if $(echo "$INDEX" | command grep -E '^\?\? ' &> /dev/null); then
     git_status="?$git_status"
@@ -108,9 +111,9 @@ directory_name() {
 prompt_icon() {
   if [[ $RETVAL -eq 0 ]]; then
     # echo "%{$fg_bold[green]%}➜  %{$reset_color%}"
-    echo "%{$fg_bold[green]%}➜  %{$reset_color%}"
+    echo "%{$fg_bold[green]%} ➜  %{$reset_color%}"
   else
-    echo "%{$fg_bold[red]%}✘  %{$reset_color%}"
+    echo "%{$fg_bold[red]%} ✘ %{$reset_color%}"
   fi
 }
 
