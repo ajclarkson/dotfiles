@@ -1,6 +1,0 @@
-[submodule "vim/vim.symlink/bundle/vim-material-theme"]
-	path = vim/vim.symlink/bundle/vim-material-theme
-	url = https://github.com/jdkanani/vim-material-theme
-[submodule "vim/vim.symlink/bundle/ctrlp.vim"]
-	path = vim/vim.symlink/bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim.git

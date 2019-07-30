@@ -1,6 +1,4 @@
 autoload colors && colors
-# alot of the git stuff has been modified from
-# http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 if (( $+commands[git] ))
 then
@@ -48,57 +46,16 @@ git_status_block() {
     git_status="✘$git_status"
   fi
 
-  
-
   if [[ -n $git_status ]]; then
     echo "%{$fg_bold[red]%}[$git_status]%{$reset_color%}"
   fi
 }
 
-git_dirty() {
-  if $(! $git status -s &> /dev/null)
-  then
-    echo ""
-  else
-    
-    if [[ $($git status --porcelain) == "" ]]
-    then
-      echo "%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
-    else
-      echo "%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
-    fi
-  fi
-}
-
-git_prompt_info () {
+git_prompt() {
  ref=$($git symbolic-ref HEAD 2>/dev/null) || return
  echo "%{$reset_color%}(%{$fg_bold[magenta]%}${ref#refs/heads/}%{$reset_color%}$(git_status_block))"
 
 }
-
-unpushed () {
-  $git cherry -v @{upstream} 2>/dev/null
-}
-
-need_push () {
-  if [[ $(unpushed) == "" ]]
-  then
-    echo ""
-  else
-    return "⇡"
-  fi
-}
-
-node_version () {
-  [[ -f package.json || -d node_modules || -n *.js(#qN^/) ]] || return
-
-  local 'node_version'
-
-  node_version=$(node -v 2> /dev/null)
-
-  echo "⬢ $node_version"
-}
-
 
 construct_dir() {
     echo ${${:-/${(j:/:)${(M)${(s:/:)${(D)PWD:h}}#(|.)[^.]}}/${PWD:t}}//\/~/\~}
@@ -117,7 +74,7 @@ prompt_icon() {
   fi
 }
 
-export PROMPT=$'$(directory_name)$(git_dirty)$(prompt_icon)'
+export PROMPT=$'$(directory_name)$(git_prompt)$(prompt_icon)'
 set_prompt () {
   
   export RPROMPT="%{$fg_bold[black]%}%{$reset_color%}"
