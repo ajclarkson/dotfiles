@@ -17,12 +17,21 @@ fi
 
 # Shortcuts
 alias .d="cd ~/.dotfiles"
-alias d="cd ~/Dropbox"
-alias thesis="cd ~/Cloud/PhD/Thesis"
-alias p="cd ~/Projects"
-alias g="git"
 alias w="cd ~/workspace"
 alias wc="cd ~/workspace/webshop-cloud"
+alias ios="cd ~/workspace/internal-open-source"
+
+# New Git Aliases
+
+alias gc="git commit -m"
+alias gco="git checkout"
+alias gp="git pull"
+alias gst="git status --short --branch"
+alias gs="git add ."
+alias gus="git reset HEAD"
+alias guc="git reset --soft HEAD^"
+alias ggo='() { git checkout -b $1 2> /dev/null || git checkout $1;}'
+alias gg="git push"
 
 # IP addresses
 alias ip="curl icanhazip.com"
