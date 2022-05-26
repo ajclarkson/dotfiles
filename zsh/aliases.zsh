@@ -29,6 +29,11 @@ alias ip="curl icanhazip.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
+#terraform
+
+alias tp="terraform plan"
+alias ta="terraform apply"
+alias ti="terraform init"
 
 alias reload!="source ~/.zshrc"
 
