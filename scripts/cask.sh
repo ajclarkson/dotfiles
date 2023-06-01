@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 ROOT_DIR=$1
+SETUP_MODE=$2
 source "$ROOT_DIR/commands/__util.sh"
 
 log_section_start "Installing applications via cask"
@@ -11,7 +12,9 @@ brew install --cask raycast
 brew install --cask bartender
 brew install --cask logitune
 brew install --cask whatsapp
+brew install --cask appcleaner
 
-# work apps
-brew install --cask slack
-brew install --cask meetingbar
+if [ $SETUP_MODE != "home" ]; then
+    brew install --cask slack
+    brew install --cask meetingbar
+fi

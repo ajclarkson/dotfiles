@@ -9,7 +9,7 @@ brew -v >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercont
 brew_install_or_upgrade zsh
 
 # Set zsh as the default shell
-if [ $SHELL="/bin/zsh" ]; then
+if [ $SHELL = "/bin/zsh" ]; then
     echo "Shell is already set to zsh"
 else
     echo "Setting default shell to zsh"
@@ -17,4 +17,3 @@ else
 fi
 
 brew_install_or_upgrade nvm
-brew_install_or_upgrade mas

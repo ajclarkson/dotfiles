@@ -4,9 +4,21 @@ set -e
 
 ROOT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 COMMAND="$ROOT_DIR/commands/$1.sh"
+SETUP_MODE="default"
+
+if [ -n "$2" ]; then
+  if [[ $2 = "work"  || $2 = "home" ]]; then
+    echo "Running in $2 setup mode"
+    SETUP_MODE="$2"
+  else
+    echo "WARN: Unrecognised setup mode $2, using default"
+  fi
+else
+  echo "No setup mode provided, using default"
+fi
 
 if [ -e "$COMMAND" ]; then
-  bash "$COMMAND" "$ROOT_DIR"
+  bash "$COMMAND" "$ROOT_DIR" "$SETUP_MODE"
 else
   echo "$1 is no defined command"
 fi
