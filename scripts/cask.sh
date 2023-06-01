@@ -25,3 +25,11 @@ if [ $SETUP_MODE != "home" ]; then
     brew install --cask slack
     brew install --cask meetingbar
 fi
+
+if [ $SETUP_MODE == "home" ]; then
+    brew install --cask lens
+    brew install --cask mqttx
+    brew install --cask nordvpn
+    brew install --cask qmk-toolbox
+    brew install --cask openvpn-connect
+fi

@@ -21,3 +21,5 @@ brew_install_or_upgrade exa
 brew_install_or_upgrade curl
 brew_install_or_upgrade jq
 brew_install_or_upgrade bat
+brew_install_or_upgrade terraform
+brew_install_or_upgrade wget
