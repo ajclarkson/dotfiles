@@ -1,6 +1,6 @@
 #!/bin/env zsh
 
-PROMPT='🐢 %{$fg_bold[cyan]%}$ZSH_THEME_CLOUD_PREFIX%{$fg_bold[green]%}%{$fg[green]%}% $(shrink_path -f)%{$fg_bold[cyan]%}$(git_prompt_info)%{$fg_bold[blue]%}» %{$reset_color%}'
+PROMPT='🐢 %{$fg_bold[cyan]%}$ZSH_THEME_CLOUD_PREFIX%{$fg_bold[green]%}%{$fg[green]%}% $(shrink_path -f)%{$fg_bold[cyan]%}$(git_prompt_info)%{$fg_bold[blue]%} » %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}(%{$fg[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

@@ -17,3 +17,7 @@ else
 fi
 
 brew_install_or_upgrade nvm
+brew_install_or_upgrade exa
+brew_install_or_upgrade curl
+brew_install_or_upgrade jq
+brew_install_or_upgrade bat
