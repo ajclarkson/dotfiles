@@ -1,11 +1,33 @@
 #!/bin/bash
 
-log_section_start() {
+ARROW="￫"
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+log_start() {
   echo ""
   echo ""
-  echo "-> $1"
+  echo -e "${CYAN} $ARROW $1 ${NC}"
   echo ""
 }
+
+log_success() {
+  echo ""
+  echo ""
+  echo -e "${GREEN} $ARROW $1 ${NC}"
+  echo ""
+}
+
+log_warn() {
+  echo ""
+  echo ""
+  echo -e "${YELLOW} $ARROW $1 ${NC}"
+  echo ""
+}
+
 
 function symlink_files() {
   echo "**** Sym linking files from $1 to $2"
