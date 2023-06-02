@@ -2,7 +2,7 @@
 ROOT_DIR=$1
 source "$ROOT_DIR/commands/__util.sh"
 
-log_section_start "Configuring mac settings"
+log_start "Configuring mac global defaults"
 
 echo "Show the ~/Library folder in Finder"
 chflags nohidden ~/Library
@@ -58,5 +58,8 @@ echo "Disable CMD+space for spotlight"
 echo "Update Apple developer utils"
 softwareupdate --all --install --force
 
-killall SystemUIServer
-killall "Dock"
+for app in "Dock" "Finder" "SystemUIServer"; do
+  killall "${app}" &> /dev/null
+done
+
+log_success "Configured global defaults successfully"

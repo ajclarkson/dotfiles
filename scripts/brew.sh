@@ -2,7 +2,7 @@
 ROOT_DIR=$1
 source "$ROOT_DIR/commands/__util.sh"
 
-log_section_start "Installing brew and common programs"
+log_start "Installing brew and common programs"
 
 brew -v >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -23,3 +23,5 @@ brew_install_or_upgrade jq
 brew_install_or_upgrade bat
 brew_install_or_upgrade terraform
 brew_install_or_upgrade wget
+
+log_success "Successfully installed brew and common programs"
