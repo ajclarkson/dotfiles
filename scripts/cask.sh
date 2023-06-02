@@ -51,6 +51,7 @@ if [ $SETUP_MODE == "home" ]; then
     "qmk-toolbox" \
     "openvpn-connect" \
     "arq" \
+    "docker" \
     "vlc"; do
     brew install --cask $home_app
     done
