@@ -6,11 +6,6 @@
 ~/path/to/dotfiles/dotfiles install
 ```
 
-If you provide the command with the `home` option, it will skip installing work dependencies
-```bash
-~/path/to/dotfiles/dotfiles install home
-```
-
 ## What's included?
 
 - oh-my-zsh, plugins, prompt customisation
@@ -26,4 +21,6 @@ If you provide the command with the `home` option, it will skip installing work 
 
 ## Credit
 
-Much of my new refreshed approach to my dotfiles has been lifted and adapted directly from (stefanjudis)[https://github.com/stefanjudis/dotfiles]
+Much inspiration taken from the approaches in:
+- (stefanjudis)[https://github.com/stefanjudis/dotfiles]
+- (mihaliak)[https://github.com/mihaliak/dotfiles/blob/master/bin/dotfiles]

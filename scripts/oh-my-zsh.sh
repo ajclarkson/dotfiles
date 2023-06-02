@@ -10,7 +10,7 @@ if [ -d ~/.oh-my-zsh/ ]; then
   echo "Cleaning up ~/.oh-my-zsh/"
   rm -rf ~/.oh-my-zsh/
 fi
-RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUNZSH=no KEEP_ZSHRC=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 FROM_DIR="$CONFIG_DIR/oh-my-zsh"
 TARGET_DIR=~/.oh-my-zsh/custom/
 symlink_files "$FROM_DIR/*" "$TARGET_DIR"
