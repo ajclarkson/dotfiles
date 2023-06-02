@@ -1,7 +1,7 @@
 {
     "workbench.colorTheme": "GitHub Dark",
-    "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "onFocusChange",
     "window.zoomLevel": 0,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.iconTheme": "material-icon-theme"
 }
