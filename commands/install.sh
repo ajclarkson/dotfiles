@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-# get current location
 ROOT_DIR=$1
 CONFIG_DIR="$ROOT_DIR/config"
 SCRIPTS_DIR="$ROOT_DIR/scripts"
