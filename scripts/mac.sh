@@ -7,10 +7,6 @@ log_start "Configuring mac global defaults"
 echo "Show the ~/Library folder in Finder"
 chflags nohidden ~/Library
 
-echo "show hidden files by default"
-defaults write com.apple.Finder AppleShowAllFiles -bool true
-
-
 echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 

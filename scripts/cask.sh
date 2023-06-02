@@ -18,8 +18,9 @@ brew install --cask bartender
 brew install --cask logitune
 brew install --cask whatsapp
 brew install --cask appcleaner
+brew install --cask rectangle
 
-if [ $SETUP_MODE != "home" ]; then
+if [ $SETUP_MODE == "work" ]; then
     brew install --cask slack
     brew install --cask meetingbar
 fi
