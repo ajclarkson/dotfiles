@@ -33,7 +33,6 @@ If no `SETUP_MODE` variable is found in the `.env` file, then it will revert to 
 
 ## Manual steps
 
-- iterm2 is installed by cask, however the profile is not automatically configured and should be done manually. For convenience, the profile json is saved in the `~/.oh-my-zsh/custom/iterm-profile-config.json` location after `install` is run.
 - logitune is installed by cask, but right now the formula only grabs the installer. The logs will output a command to open it **but this is a manual step which must be completed on the first run**. If it isn't completed, subsequent runs will still display the "logitune is already installed" message, even though it actually isn't.
 
 ## Credit

@@ -23,5 +23,6 @@ brew_install_or_upgrade jq
 brew_install_or_upgrade bat
 brew_install_or_upgrade terraform
 brew_install_or_upgrade wget
+brew_install_or_upgrade mas
 
 log_success "Successfully installed brew and common programs"

@@ -19,6 +19,8 @@ else
   bash "$SCRIPTS_DIR/cask.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/node.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/mac.sh" "$ROOT_DIR" "$SETUP_MODE"
+  bash "$SCRIPTS_DIR/mas.sh" "$ROOT_DIR" "$SETUP_MODE"
+  
 
 fi
 

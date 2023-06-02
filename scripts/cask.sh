@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-set -x
 ROOT_DIR=$1
 SETUP_MODE=$2
 CONFIG_DIR=$ROOT_DIR/config
@@ -15,6 +14,8 @@ brew install --cask font-caskaydia-cove-nerd-font
 brew install --cask spotify
 brew install --cask obsidian
 brew install --cask iterm2
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$CONFIG_DIR/iterm"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 brew install --cask raycast
 brew install --cask bartender
