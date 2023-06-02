@@ -2,6 +2,11 @@
 
 ## Usage
 
+### Pre-requisites
+
+- For the `mas` commands to succeed, you must have recently opened the Mac App Store so that your credentials are refreshed. The `mas signin` command does not work on newer versions of OSX :(
+- **N.B** (For my own situation) If running this on cloudflare WARP some of the tools fail with certificate errors.
+
 The `./dotfiles` script at the root of the install is the binary entry point to everything. To quickly get up and running:
 
 ```bash

@@ -1,0 +1,4 @@
+k--kato.intellij-idea-keybindings
+lukas-tr.materialdesignicons-intellisense
+dustinsanders.an-old-hope-theme-vscode
+eamodio.gitlens

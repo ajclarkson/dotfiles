@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
+
+set -x
 ROOT_DIR=$1
 SETUP_MODE=$2
+CONFIG_DIR=$ROOT_DIR/config
 source "$ROOT_DIR/commands/__util.sh"
 
 log_start "Installing applications via cask"
@@ -19,6 +22,15 @@ brew install --cask logitune
 brew install --cask whatsapp
 brew install --cask appcleaner
 brew install --cask rectangle
+brew install --cask google-chrome
+brew install --cask 1password
+brew install --cask zwift
+
+brew install --cask visual-studio-code
+cat $CONFIG_DIR/vscode/extensions.txt | while read ext; do
+    code --install-extension $ext
+done 
+symlink $CONFIG_DIR/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 
 if [ $SETUP_MODE == "work" ]; then
     brew install --cask slack

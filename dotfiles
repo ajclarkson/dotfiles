@@ -5,13 +5,14 @@ set -e
 ROOT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 COMMAND="$ROOT_DIR/commands/$1.sh"
 SETUP_MODE="default"
+SUB_COMMAND=$2
 
 if [ -f "$ROOT_DIR/.env" ]; then
   export $(cat .env | xargs)
 fi
 
 if [ -e "$COMMAND" ]; then
-  bash "$COMMAND" "$ROOT_DIR" "$SETUP_MODE"
+  bash "$COMMAND" "$ROOT_DIR" "$SETUP_MODE" "$SUB_COMMAND"
 else
   echo "$1 is no defined command"
 fi
