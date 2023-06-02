@@ -9,12 +9,12 @@ source "$ROOT_DIR/commands/__util.sh"
 
 log_start "Running install script with SETUP_MODE=$SETUP_MODE"
 
-# bash "$SCRIPTS_DIR/oh-my-zsh.sh" "$ROOT_DIR" "$SETUP_MODE"
-# bash "$SCRIPTS_DIR/dots.sh" "$ROOT_DIR" "$SETUP_MODE"
-# bash "$SCRIPTS_DIR/brew.sh" "$ROOT_DIR" "$SETUP_MODE"
-# bash "$SCRIPTS_DIR/cask.sh" "$ROOT_DIR" "$SETUP_MODE"
-# bash "$SCRIPTS_DIR/node.sh" "$ROOT_DIR" "$SETUP_MODE"
-# bash "$SCRIPTS_DIR/mac.sh" "$ROOT_DIR" "$SETUP_MODE"
+bash "$SCRIPTS_DIR/oh-my-zsh.sh" "$ROOT_DIR" "$SETUP_MODE"
+bash "$SCRIPTS_DIR/dots.sh" "$ROOT_DIR" "$SETUP_MODE"
+bash "$SCRIPTS_DIR/brew.sh" "$ROOT_DIR" "$SETUP_MODE"
+bash "$SCRIPTS_DIR/cask.sh" "$ROOT_DIR" "$SETUP_MODE"
+bash "$SCRIPTS_DIR/node.sh" "$ROOT_DIR" "$SETUP_MODE"
+bash "$SCRIPTS_DIR/mac.sh" "$ROOT_DIR" "$SETUP_MODE"
 
-# log_start "Reloading zshrc"
-# zsh
+log_start "Reloading zshrc"
+zsh

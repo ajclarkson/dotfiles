@@ -1,10 +1,22 @@
 # dotfiles
 
-## How to get started
+## Usage
+
+The `./dotfiles` script at the root of the install is the binary entry point to everything. To quickly get up and running:
 
 ```bash
 ~/path/to/dotfiles/dotfiles install
 ```
+This binary supports loading an `.env` file to customise some behaviours, listed below
+
+### Setup Mode
+
+`SETUP_MODE=[default,home,work]`
+
+The `SETUP_MODE` variable allows control over different environments for different machines. Default will run anything that doesn't have a specific environment attached. At the moment I also have `home` and `work` setups to prevent installing dependencies and applications on machines where they aren't needed. 
+
+If no `SETUP_MODE` variable is found in the `.env` file, then it will revert to `default`.
+
 
 ## What's included?
 
