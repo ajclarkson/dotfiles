@@ -52,6 +52,7 @@ if [ $SETUP_MODE == "home" ]; then
     "openvpn-connect" \
     "arq" \
     "docker" \
+    "steam" \
     "vlc"; do
     brew install --cask $home_app
     done
