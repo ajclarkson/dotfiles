@@ -38,7 +38,7 @@ symlink $CONFIG_DIR/vscode/settings.json $HOME/Library/Application\ Support/Code
 
 if [ $SETUP_MODE == "work" ]; then
   for work_app in "slack" \
-    "meetingbar"; do
+    ; do
     brew install --cask $work_app
   done
 
