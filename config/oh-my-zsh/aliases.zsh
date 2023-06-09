@@ -24,6 +24,9 @@ alias ip="echo Your ip is; dig +short myip.opendns.com @resolver1.opendns.com;"
 # Raycast aliases
 alias raylog="log stream --predicate \"subsystem == 'com.raycast.macos'\" --level debug --style compact"
 
+# Use coreutils instead of mac defaults
+alias date=gdate
+
 # Suffix aliases
 # https://www.stefanjudis.com/today-i-learned/suffix-aliases-in-zsh/
 alias -s {js,json,env,gitignore,md,html,css,toml}=cat
