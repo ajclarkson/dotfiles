@@ -22,7 +22,7 @@ alias cat='bat'
 alias ip="echo Your ip is; dig +short myip.opendns.com @resolver1.opendns.com;"
 
 # Raycast aliases
-alias raylog="log stream --predicate "subsystem == 'com.raycast.macos'" --level debug --style compact"
+alias raylog="log stream --predicate \"subsystem == 'com.raycast.macos'\" --level debug --style compact"
 
 # Suffix aliases
 # https://www.stefanjudis.com/today-i-learned/suffix-aliases-in-zsh/
