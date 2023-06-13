@@ -7,12 +7,12 @@ function fish_prompt --description 'Write out the prompt'
 
     # Color the prompt differently when we're root
     set -l color_cwd $fish_color_cwd
-    set -l suffix '>'
+    set -l suffix '> '
     if functions -q fish_is_root_user; and fish_is_root_user
         if set -q fish_color_cwd_root
             set color_cwd $fish_color_cwd_root
         end
-        set suffix '#'
+        set suffix '# '
     end
 
     # Write pipestatus
@@ -65,3 +65,6 @@ if status is-interactive
 end
 
 set fish_greeting ""
+set default_path /usr/bin /usr/sbin /bin /sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
+set homebrew /usr/local/bin /usr/local/sbin /opt/homebrew/bin
+set -gx PATH $homebrew $default_path
