@@ -63,3 +63,5 @@ if status is-interactive
     abbr date gdate
 
 end
+
+set fish_greeting ""
