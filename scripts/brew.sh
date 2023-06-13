@@ -10,6 +10,7 @@ for app in "fish" \
   "fisher" \
   "fd" \
   "fzf" \
+  "neovim" \
   "nvm" \
   "coreutils" \
   "exa" \
