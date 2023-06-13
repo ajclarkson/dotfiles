@@ -6,7 +6,8 @@ log_start "Installing brew and common programs"
 
 brew -v >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-for app in "zsh" \
+for app in "fish" \
+  "fisher" \
   "nvm" \
   "coreutils" \
   "exa" \
@@ -20,12 +21,13 @@ for app in "zsh" \
   brew_install_or_upgrade $app
 done
 
-# Set zsh as the default shell
-if [ $SHELL = "/bin/zsh" ]; then
-    echo "Shell is already set to zsh"
+# Set fish as the default shell
+if [ $SHELL = "/opt/homebrew/bin/fish" ]; then
+    echo "Shell is already set to fish"
 else
-    echo "Setting default shell to zsh"
-    chsh -s /bin/zsh
+    echo "Setting default shell to fish"
+    sudo sh -c 'echo /opt/homebrew/bin/fish >> /etc/shells'
+    chsh -s /opt/homebrew/bin/fish
 fi
 
 log_success "Successfully installed brew and common programs"
