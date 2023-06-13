@@ -43,8 +43,9 @@ if status is-interactive
     abbr gs 'git add .'
     abbr gus 'git reset HEAD'
     abbr guc 'git reset --soft HEAD^'
-    abbr ggo '() { git checkout -b $1 2> /dev/null || git checkout $1;}'
     abbr gg 'git push'
+    abbr gb 'git branch'
+    abbr gco 'git checkout'
 
     # Good looking lists
     abbr ll 'exa -la --git --icons'
