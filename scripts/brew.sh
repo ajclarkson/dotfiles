@@ -8,6 +8,8 @@ brew -v >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercont
 
 for app in "fish" \
   "fisher" \
+  "fd" \
+  "fzf" \
   "nvm" \
   "coreutils" \
   "exa" \
