@@ -17,6 +17,7 @@ TARGET_DIR=~/.config/fish
 symlink_files "$FROM_DIR/*" "$TARGET_DIR"
 
 fisher install PatrickF1/fzf.fish
+fisher install jorgebucaran/nvm.fish
 
 log_success "Successfully configured fish"
 

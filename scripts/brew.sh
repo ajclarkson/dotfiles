@@ -11,7 +11,6 @@ for app in "fish" \
   "fd" \
   "fzf" \
   "neovim" \
-  "nvm" \
   "coreutils" \
   "exa" \
   "curl" \

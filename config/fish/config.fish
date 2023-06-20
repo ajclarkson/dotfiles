@@ -65,6 +65,7 @@ if status is-interactive
 end
 
 set fish_greeting ""
-set default_path /usr/bin /usr/sbin /bin /sbin /usr/local/bin /System/Cryptexes/App/usr/bin /usr/bin /bin /usr/sbin /sbin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin /var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
 set homebrew /usr/local/bin /usr/local/sbin /opt/homebrew/bin
-set -gx PATH $homebrew $default_path
+set -x NVM_DIR ~/.nvm
+set -gx PATH $homebrew $PATH
+set --universal nvm_default_version v18.16.0
