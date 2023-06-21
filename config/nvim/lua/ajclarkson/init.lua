@@ -1,3 +1,2 @@
-
-require("ajclarkson.remap")
 require("ajclarkson.set")
+require("ajclarkson.remap")

@@ -62,6 +62,8 @@ if status is-interactive
     # Use coreutils instead of mac defaults
     abbr date gdate
 
+    # Redirect vim to nvim
+    abbr vim nvim
 end
 
 set fish_greeting ""
