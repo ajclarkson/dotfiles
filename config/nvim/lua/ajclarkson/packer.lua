@@ -58,5 +58,9 @@ return require('packer').startup(function(use)
 }
 use('christoomey/vim-tmux-navigator')
 use('APZelos/blamer.nvim')
+use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+}
 end)
 
