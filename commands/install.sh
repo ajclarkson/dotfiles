@@ -13,16 +13,14 @@ if [ -n "$3" ]; then
   bash "$SCRIPTS_DIR/$SUB_COMMAND.sh" "$ROOT_DIR" "$SETUP_MODE"
 else
   log_start "Running install script with SETUP_MODE=$SETUP_MODE"
-  bash "$SCRIPTS_DIR/oh-my-zsh.sh" "$ROOT_DIR" "$SETUP_MODE"
+    bash "$SCRIPTS_DIR/fish.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/dots.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/brew.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/cask.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/node.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/mac.sh" "$ROOT_DIR" "$SETUP_MODE"
   bash "$SCRIPTS_DIR/mas.sh" "$ROOT_DIR" "$SETUP_MODE"
-  
-
 fi
 
-log_start "Reloading zshrc"
-zsh
+log_start "Reloading fish"
+fish

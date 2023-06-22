@@ -28,6 +28,17 @@ log_warn() {
   echo ""
 }
 
+function symlink_dir() {
+  echo "**** Sym linking directory from $1 to $2"
+  if [ -L "$2" ]; then
+    echo "found old $2 - removing ..."
+    rm "$2"
+  fi
+
+  echo "linking $1 -> $2"
+  ln -s "$1" "$2"
+  echo ""
+}
 
 function symlink_files() {
   echo "**** Sym linking files from $1 to $2"
