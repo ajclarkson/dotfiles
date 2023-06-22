@@ -30,6 +30,8 @@ else
   bash "$SCRIPTS_DIR/node.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/mac.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/mas.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
+  bash "$SCRIPTS_DIR/nvim.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
+  bash "$SCRIPTS_DIR/tmux.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
 fi
 
 log_start "Reloading fish"
