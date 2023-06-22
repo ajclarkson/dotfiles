@@ -14,8 +14,7 @@ log_start "Installing brew and common programs"
 
 brew -v >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-for app in "fish" \
-  "fd" \
+for app in "fd" \
   "ripgrep" \
   "tmux" \
   "fzf" \

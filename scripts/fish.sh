@@ -5,7 +5,16 @@ OS=$3
 ARCH=$4
 source "$ROOT_DIR/commands/__util.sh"
 
-log_start "Configuring Fish"
+log_start "Installing and Configuring Fish"
+
+if [ $OS = "linux" ]; then
+    sudo apt-get install -y fish
+elif [ $OS = "mac" ]; then
+    brew install fish
+else
+    log_error "Platform $OS does not support installing fish"
+    exit 1
+fi
 
 if [ -d ~/.config/fish ]; then
   echo "Cleaning up ~/.config/fish/"
