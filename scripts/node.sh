@@ -5,14 +5,9 @@ source "$ROOT_DIR/commands/__util.sh"
 
 log_start "Installing nvm and latest stable version of node"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-nvm install stable
-nvm alias default stable
-nvm use stable
-
-source $NVM_DIR/nvm.sh
+fish -c "nvm install lts"
+fish -c "nvm alias default lts"
+fish -c "nvm use lts"
 
 echo "Updating npm"
 npm i -g npm

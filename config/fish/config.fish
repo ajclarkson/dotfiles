@@ -70,4 +70,4 @@ set fish_greeting ""
 set homebrew /usr/local/bin /usr/local/sbin /opt/homebrew/bin
 set -x NVM_DIR ~/.nvm
 set -gx PATH $homebrew $PATH
-set --universal nvm_default_version v18.16.0
+set --universal nvm_default_version 18

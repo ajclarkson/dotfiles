@@ -17,8 +17,8 @@ FROM_DIR="$CONFIG_DIR/fish"
 TARGET_DIR=~/.config/fish
 symlink_files "$FROM_DIR/*" "$TARGET_DIR"
 
-fisher install PatrickF1/fzf.fish
-fisher install jorgebucaran/nvm.fish
+fish -c "fisher install PatrickF1/fzf.fish"
+fish -c "fisher install jorgebucaran/nvm.fish"
 
 
 FISH_PATH=/usr/local/bin/fish
