@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 ROOT_DIR=$1
 source "$ROOT_DIR/commands/__util.sh"
+OS=$3
+
+if [ $OS != "mac" ]; then
+    log_warn "Mac defaults commands only run on mac, detected $OS"
+    exit 0
+fi
+
+
 
 log_start "Configuring mac global defaults"
 

@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 ROOT_DIR=$1
 source "$ROOT_DIR/commands/__util.sh"
+SETUP_MODE=$2
+OS=$3
+ARCH=$4
+
+if [ $OS != "mac" ]; then
+    log_warn "Brew commands only run on mac, detected $OS"
+    exit 0
+fi
 
 log_start "Installing brew and common programs"
 

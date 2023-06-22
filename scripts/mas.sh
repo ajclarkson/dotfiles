@@ -2,6 +2,12 @@
 ROOT_DIR=$1
 source "$ROOT_DIR/commands/__util.sh"
 
+if [ $OS != "mac" ]; then
+    log_warn "Mac App Store commands only run on mac, detected $OS"
+    exit 0
+fi
+
+
 log_start "Installing apps from mac app store"
 
 # Adguard for Safari
