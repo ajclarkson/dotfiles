@@ -28,8 +28,6 @@ symlink_files "$FROM_DIR/*" "$TARGET_DIR"
 
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install PatrickF1/fzf.fish"
-fish -c "fisher install jorgebucaran/nvm.fish"
-
 
 FISH_PATH=/usr/local/bin/fish
 

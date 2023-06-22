@@ -5,6 +5,8 @@ source "$ROOT_DIR/commands/__util.sh"
 
 log_start "Installing nvm and latest stable version of node"
 
+fish -c "fisher install jorgebucaran/nvm.fish"
+
 fish -c "nvm install lts"
 fish -c "nvm alias default lts"
 fish -c "nvm use lts"
