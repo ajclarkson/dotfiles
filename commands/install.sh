@@ -24,15 +24,16 @@ echo "$SHELL $FISH_PATH $OS $ARCH"
 else
   log_start "Running install script with SETUP_MODE=$SETUP_MODE, OS=$OS, ARCH=$ARCH"
   bash "$SCRIPTS_DIR/dots.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
-  bash "$SCRIPTS_DIR/brew.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
-  bash "$SCRIPTS_DIR/cask.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
+  bash "$SCRIPTS_DIR/utils.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
+  bash "$SCRIPTS_DIR/applications.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
+  bash "$SCRIPTS_DIR/iterm.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/fish.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/node.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/mac.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
-  bash "$SCRIPTS_DIR/mas.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/nvim.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/tmux.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
 fi
+
 
 log_start "Reloading fish"
 fish

@@ -79,3 +79,5 @@ function brew_install_or_upgrade {
         HOMEBREW_NO_AUTO_UPDATE=1 brew install "$1"
     fi
 }
+
+function join_by { local IFS="$1"; shift; echo "$*"; }
