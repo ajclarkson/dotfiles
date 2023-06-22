@@ -3,7 +3,15 @@
 ROOT_DIR=$1
 SETUP_MODE=$2
 CONFIG_DIR=$ROOT_DIR/config
+OS=$3
+ARCH=$4
 source "$ROOT_DIR/commands/__util.sh"
+
+if [ $OS != "mac" ]; then
+    log_warn "Brew commands only run on mac, detected $OS"
+    exit 0
+fi
+
 
 log_start "Installing applications via cask"
 

@@ -28,6 +28,13 @@ log_warn() {
   echo ""
 }
 
+log_error() {
+    echo ""
+    echo ""
+    echo -e "${RED} $ARROW $1 ${NC}"
+    echo ""
+}
+
 function symlink_dir() {
   echo "**** Sym linking directory from $1 to $2"
   if [ -L "$2" ]; then

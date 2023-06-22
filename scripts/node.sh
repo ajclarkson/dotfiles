@@ -12,7 +12,7 @@ nvm install stable
 nvm alias default stable
 nvm use stable
 
-source $(brew --prefix nvm)/nvm.sh
+source $NVM_DIR/nvm.sh
 
 echo "Updating npm"
 npm i -g npm

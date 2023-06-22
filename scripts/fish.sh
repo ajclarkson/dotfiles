@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 ROOT_DIR=$1
 CONFIG_DIR="$ROOT_DIR/config"
-
+OS=$3
+ARCH=$4
 source "$ROOT_DIR/commands/__util.sh"
 
 log_start "Configuring Fish"
@@ -19,6 +20,24 @@ symlink_files "$FROM_DIR/*" "$TARGET_DIR"
 fisher install PatrickF1/fzf.fish
 fisher install jorgebucaran/nvm.fish
 
+
+FISH_PATH=/usr/local/bin/fish
+
+if [ $OS = "mac" ] && [ $ARCH = "arm64" ]; then
+    FISH_PATH=/opt/homebrew/bin/fish
+fi
+
+if [ $SHELL = $FISH_PATH ]; then
+    echo "Shell is already set to fish @$FISH_PATH"
+else
+    echo "Setting default shell to fish @ $FISH_PATH"
+    sudo sh -c 'echo $FISH_PATH >> /etc/shells'
+    chsh -s $FISH_PATH
+fi
+
+
+
 log_success "Successfully configured fish"
+
 
 
