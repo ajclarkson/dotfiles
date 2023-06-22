@@ -20,7 +20,6 @@ for app in "fish" \
   "ripgrep" \
   "tmux" \
   "fzf" \
-  "neovim" \
   "coreutils" \
   "exa" \
   "curl" \
