@@ -12,7 +12,7 @@ if [ $OS = "linux" ]; then
 elif [ $OS = "mac" ]; then
     brew install fish
 else
-    log_error "Platform $OS does not support installing fish"
+    log_error "Platform $OS is incompatible with fish install script"
     exit 1
 fi
 

@@ -18,7 +18,7 @@ if [ $OS = "linux" ]; then
 elif [ $OS = "mac" ]; then
     brew install neovim
 else
-    log_error "Platform $OS is not supported for neovim installation"
+    log_error "Platform $OS is incompatible with neovim install script"
     exit 1
 fi
 
