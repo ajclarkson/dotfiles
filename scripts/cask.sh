@@ -53,6 +53,7 @@ if [ $SETUP_MODE == "home" ]; then
     "arq" \
     "docker" \
     "steam" \
+    "balenaetcher" \
     "vlc"; do
     brew install --cask $home_app
     done
