@@ -16,16 +16,12 @@ else
     exit 1
 fi
 
-if [ -d ~/.config/fish ]; then
-  echo "Cleaning up ~/.config/fish/"
-  rm -rf ~/.config/fish/
-fi
-
-mkdir -p ~/.config/fish
 FROM_DIR="$CONFIG_DIR/fish"
 TARGET_DIR=~/.config/fish
 symlink_files "$FROM_DIR/*" "$TARGET_DIR"
 
+symlink_dir "$FROM_DIR/ajclarkson" "$TARGET_DIR/ajclarkson"
+symlink_files "$FROM_DIR/functions/*" "$TARGET_DIR/functions"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fish -c "fisher install PatrickF1/fzf.fish"
 
