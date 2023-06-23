@@ -1,0 +1,8 @@
+[includeIf "hasconfig:remote.*.url:git@gitlab.ocado.tech*/**"]
+    path = .gitconfig-work-user
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.com*/**"]
+    path = .gitconfig-public-user
+
+[includeIf "hasconfig:remote.*.url:git@github.com*/**"]
+    path = .gitconfig-public-user
