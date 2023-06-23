@@ -23,7 +23,6 @@ symlink_files "$FROM_DIR/*" "$TARGET_DIR"
 symlink_dir "$FROM_DIR/ajclarkson" "$TARGET_DIR/ajclarkson"
 symlink_files "$FROM_DIR/functions/*" "$TARGET_DIR/functions"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
-fish -c "fisher install PatrickF1/fzf.fish"
 
 FISH_PATH=/usr/local/bin/fish
 
