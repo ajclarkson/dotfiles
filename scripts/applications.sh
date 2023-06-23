@@ -29,6 +29,7 @@ core_apps="\
     zwift \
     spotify \
     obsidian \
+    qmk-toolbox \
 "
 
 work_apps="\
@@ -38,7 +39,6 @@ work_apps="\
 home_apps="\
     mqttx \
     nordvpn \
-    qmk-toolbox \
     openvpn-connect \
     arq \
     docker \

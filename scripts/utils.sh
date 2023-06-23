@@ -9,7 +9,7 @@ source "$ROOT_DIR/commands/__util.sh"
 log_start "Installing common tools and utilities for $OS"
 
 core_utils="ripgrep fzf exa curl jq bat wget"
-mac_utils="coreutils mas wifi-password terraform fd"
+mac_utils="coreutils mas wifi-password terraform fd qmk/qmk/qmk"
 
 if [ $OS == "linux" ]; then
     sudo apt-get install -y $core_utils
@@ -21,33 +21,3 @@ else
     exit 1
 fi
 
-
-
-#
-# all
-#
-# ripgrep
-# fzf
-# exa
-# curl
-# jq
-# bat
-# wget
-#
-# all mac
-#
-# homebrew
-# coreutils
-# mas
-# wifi-password
-# terraform
-# fd
-# font-fira-code (cask)
-# font-caskaydia-cove-nerd-font (cask)
-#
-#
-# home mac
-#
-# work mac
-#
-# pi
