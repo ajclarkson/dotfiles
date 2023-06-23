@@ -6,3 +6,19 @@
 
 [includeIf "hasconfig:remote.*.url:git@github.com*/**"]
     path = .gitconfig-public-user
+
+[core]
+    editor = nvim
+
+[push]
+    default = current
+
+[pull]
+    rebase = false
+
+[fetch]
+    prune = true
+
+[delta]
+    side-by-side = true
+
