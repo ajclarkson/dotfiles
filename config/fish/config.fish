@@ -71,3 +71,4 @@ set homebrew /usr/local/bin /usr/local/sbin /opt/homebrew/bin
 set -x NVM_DIR ~/.nvm
 set -gx PATH $homebrew $PATH
 set --universal nvm_default_version 18
+set -gx EDITOR "nvim"

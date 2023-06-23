@@ -1,0 +1,11 @@
+# ./.tmuxinator.yml
+
+name: dotfiles
+root: ./
+
+windows:
+  - editor:
+    - nvim
+  - terminal:
+    - fish
+    - clear

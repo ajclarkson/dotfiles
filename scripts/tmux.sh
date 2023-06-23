@@ -7,9 +7,9 @@ source "$ROOT_DIR/commands/__util.sh"
 log_start "Installing and Configuring tmux"
 
 if [ $OS = "mac" ]; then
-    brew install tmux
+    brew install tmux tmuxinator
 elif [ $OS = "linux" ]; then
-    sudo apt-get install -y tmux
+    sudo apt-get install -y tmux tmuxinator
 else
     log_error "Platform $OS is incompatible with tmux install script"
     exit 1
