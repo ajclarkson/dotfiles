@@ -33,6 +33,7 @@ else
   bash "$SCRIPTS_DIR/nvim.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/tmux.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
   bash "$SCRIPTS_DIR/qmk.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
+  bash "$SCRIPTS_DIR/bat.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
 fi
 
 
