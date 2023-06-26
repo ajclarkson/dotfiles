@@ -68,5 +68,8 @@ use({
     run = function() vim.fn["mkdp#util#install"]() end,
 })
 
+use "lukas-reineke/indent-blankline.nvim"
+use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
 end)
 
