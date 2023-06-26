@@ -1,4 +1,4 @@
-function ColorMyPencils(color) 
+function SetColors(color) 
 	color = color or "github_dark"
 	vim.cmd.colorscheme(color)
 
@@ -7,4 +7,4 @@ function ColorMyPencils(color)
 	
 end
 
-ColorMyPencils()
+SetColors()
