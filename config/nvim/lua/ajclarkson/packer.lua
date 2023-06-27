@@ -50,5 +50,6 @@ use({
 use "lukas-reineke/indent-blankline.nvim"
 use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 use "airblade/vim-gitgutter"
+use "tpope/vim-surround"
 end)
 
