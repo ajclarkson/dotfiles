@@ -1,4 +1,3 @@
-
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Move the highlighted lines up and down in the file
