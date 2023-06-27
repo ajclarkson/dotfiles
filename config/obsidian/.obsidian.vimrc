@@ -26,3 +26,9 @@ nmap <C-j> :focusBottom
 unmap <Space>
 exmap openSwitcher obcommand switcher:open
 nmap <Space>pf :openSwitcher
+
+" stay centered when searching and scrolling
+noremap <c-d> <C-d>zz
+noremap <c-u> <C-u>zz
+noremap <n> nzzv
+noremap <N> Nzzv
