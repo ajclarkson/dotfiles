@@ -71,12 +71,14 @@ function symlink() {
   ln -s "$1" "$2";
 }
 
-function brew_install_or_upgrade {
-    if brew ls --versions "$1" >/dev/null; then
-        HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$1"
-    else
-        HOMEBREW_NO_AUTO_UPDATE=1 brew install "$1"
+function check_os_compatibility() {
+    script=$1
+    os=$2
+    valid=$3
+
+    if [[ ! " ${valid[*]} " =~ " ${os} " ]]; then
+        echo $os
+        log_warn "$script does not support OS=$os, skipping execution. Valid os values are: ${valid[*]}"
+        exit 0
     fi
 }
-
-function join_by { local IFS="$1"; shift; echo "$*"; }

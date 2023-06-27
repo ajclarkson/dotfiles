@@ -4,12 +4,8 @@ ROOT_DIR=$1
 CONFIG_DIR="$ROOT_DIR/config"
 OS=$3
 source "$ROOT_DIR/commands/__util.sh"
-
-if [ $OS != "mac" ]; then
-    log_warn "QMK is only installed to mac systems, detected $OS"
-    exit 0
-fi
-
+valid=("mac")
+check_os_compatibility "obsidian" "$OS" $valid
 log_start "Configuring QMK"
 
 qmk setup -y --home ~/.config/qmk_firmware

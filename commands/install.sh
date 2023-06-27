@@ -15,11 +15,10 @@ case "${unameOut}" in
 esac
 
 ARCH="$(arch)"
-
 if [ -n "$3" ]; then
   log_start "Running install subcommand $SUB_COMMAND with SETUP_MODE=$SETUP_MODE, OS=$OS, ARCH=$ARCH"
   bash "$SCRIPTS_DIR/$SUB_COMMAND.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"
-echo "$SHELL $FISH_PATH $OS $ARCH"
+
 else
   log_start "Running install script with SETUP_MODE=$SETUP_MODE, OS=$OS, ARCH=$ARCH"
   bash "$SCRIPTS_DIR/dots.sh" "$ROOT_DIR" "$SETUP_MODE" "$OS" "$ARCH"

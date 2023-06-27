@@ -6,12 +6,8 @@ CONFIG_DIR=$ROOT_DIR/config
 OS=$3
 ARCH=$4
 source "$ROOT_DIR/commands/__util.sh"
-
-if [ $OS != "mac" ]; then
-    log_warn "Application setup is only currently configured for mac, detected $OS"
-    exit 0
-fi
-
+valid=("mac")
+check_os_compatibility "applications" "$OS" $valid
 log_start "Installing common applications"
 
 taps="homebrew/cask-fonts"

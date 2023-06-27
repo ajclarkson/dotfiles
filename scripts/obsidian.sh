@@ -4,11 +4,9 @@ ROOT_DIR=$1
 CONFIG_DIR="$ROOT_DIR/config"
 OS=$3
 source "$ROOT_DIR/commands/__util.sh"
+valid=("mac")
+check_os_compatibility "obsidian" "$OS" $valid
 
-if [ $OS != "mac" ]; then
-    log_warn "Platform $OS is incompatible with Obsidian setup script"
-    exit 0
-fi
 log_start "Configuring obsidian"
 
 FROM_DIR="$CONFIG_DIR/obsidian"
