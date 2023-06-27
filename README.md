@@ -43,7 +43,11 @@ This variable controls applying specific settings for each of my machines. Some 
 
 ## Manual steps
 
+### Applications install script
 - logitune is installed by cask, but right now the formula only grabs the installer. The logs will output a command to open it **but this is a manual step which must be completed on the first run**. If it isn't completed, subsequent runs will still display the "logitune is already installed" message, even though it actually isn't.
+
+### Obsidian
+- vimrc plugin is required, and needs to be configured with a relative path to look for its `.obsidian.vimrc` under `~/.config/obsidian`
 
 ## Credit
 
