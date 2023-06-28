@@ -31,4 +31,7 @@ if status is-interactive
     abbr tat 'tmux attach -t '
     abbr tls 'tmux ls'
     abbr mux 'tmuxinator'
+
+    # Fix ssh with kitty
+    abbr ssh 'kitty +kitten ssh '
 end
