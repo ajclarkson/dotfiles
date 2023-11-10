@@ -22,8 +22,6 @@ STATUS_EXPIRATION=$(gdate -d "today $1" +%s)
 CURRENT_TIME=$(gdate +%s)
 MINS_UNTIL_EXPIRATION=$(( ($STATUS_EXPIRATION - $CURRENT_TIME) / 60 ))
 
-#API_TOKEN="REDACTED"
-
 # Main program
 if [[ -z "$SLACK_OAUTH_TOKEN" ]]
 then 
