@@ -65,5 +65,7 @@ use {
 		"MunifTanjim/nui.nvim",
 	  }
 	}
+
+use("tpope/vim-fugitive")
 end)
 
