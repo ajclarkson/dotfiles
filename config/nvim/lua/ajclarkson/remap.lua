@@ -18,3 +18,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Paste over the top of a buffer without taking the contents to the register
 vim.keymap.set("x", "<leader>p", "\"_dP")
+
+-- Navigate the buffers in a more natural way
+vim.keymap.set("n", "<leader>j", ":bp<CR>")
+vim.keymap.set("n", "<leader>k", ":bn<CR>")
