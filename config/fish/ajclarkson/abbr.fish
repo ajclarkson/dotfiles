@@ -28,7 +28,7 @@ if status is-interactive
     abbr raylog "log stream --predicate \"subsystem == 'com.raycast.macos'\" --level debug --style compact"
 
     # Tmux aliases
-    abbr tat 'tmux attach -t '
+    abbr tat 'tmux attach -t'
     abbr tls 'tmux ls'
     abbr mux 'tmuxinator'
 

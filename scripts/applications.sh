@@ -30,6 +30,7 @@ core_apps="\
 
 work_apps="\
     slack \
+    meetingbar \
 "
 
 home_apps="\
