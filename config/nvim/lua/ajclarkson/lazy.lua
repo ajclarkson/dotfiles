@@ -20,7 +20,14 @@ local plugins = {
         'nvim-telescope/telescope.nvim', version = "0.1.4",
         dependencies = { {'nvim-lua/plenary.nvim'} }
     },
-
+    {
+        'epwalsh/obsidian.nvim',
+        version = "*",
+        ft = "markdown",
+        dependencies = {
+            'nvim-lua/plenary.nvim'
+        }
+    },
     'rebelot/kanagawa.nvim',
     'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',
     'mbbill/undotree',

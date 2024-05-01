@@ -34,4 +34,7 @@ if status is-interactive
 
     # Fix ssh with kitty
     abbr ssh 'kitty +kitten ssh '
+
+    # Open obsidian vault
+    abbr vault 'nvim /Users/adam.clarkson/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Second\ Brain/'
 end
