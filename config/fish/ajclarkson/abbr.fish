@@ -36,5 +36,5 @@ if status is-interactive
     abbr ssh 'kitty +kitten ssh '
 
     # Open obsidian vault
-    abbr vault 'nvim /Users/adam.clarkson/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Second\ Brain/'
+    abbr vault 'cd /Users/adam.clarkson/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Second\ Brain/ && tmuxinator'
 end
