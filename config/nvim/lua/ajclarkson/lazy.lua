@@ -60,7 +60,6 @@ local plugins = {
     },
 
     'lukas-reineke/indent-blankline.nvim',
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
     'airblade/vim-gitgutter',
     'tpope/vim-surround',
     {
