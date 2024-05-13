@@ -23,6 +23,7 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 vim.keymap.set("n", "<leader>j", ":bp<CR>")
 vim.keymap.set("n", "<leader>k", ":bn<CR>")
 
+-- Escape insert mode by rolling jk 
 vim.keymap.set("i", "jk", "<esc>")
 
 -- Disable arrow keys to force using vim navigations
