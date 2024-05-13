@@ -1,3 +1,4 @@
+-- A different way to get into the default file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Move the highlighted lines up and down in the file
@@ -27,7 +28,6 @@ vim.keymap.set("n", "<leader>k", ":bn<CR>")
 vim.keymap.set("i", "jk", "<esc>")
 
 -- Disable arrow keys to force using vim navigations
-
 vim.keymap.set("n", "<Up>", "<nop>")
 vim.keymap.set("i", "<Up>", "<nop>")
 vim.keymap.set("v", "<Up>", "<nop>")
@@ -43,3 +43,6 @@ vim.keymap.set("v", "<Left>", "<nop>")
 vim.keymap.set("n", "<Right>", "<nop>")
 vim.keymap.set("i", "<Right>", "<nop>")
 vim.keymap.set("v", "<Right>", "<nop>")
+
+-- Map :update to leader w for faster saves
+vim.keymap.set("n", "<leader>w", ":update<CR>")
