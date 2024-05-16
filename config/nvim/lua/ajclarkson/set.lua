@@ -20,4 +20,4 @@ vim.g.mapleader = " "
 vim.opt.conceallevel = 2
 
 vim.opt.hidden = true
-
+vim.set.signcolumn = "yes"

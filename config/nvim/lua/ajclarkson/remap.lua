@@ -46,3 +46,7 @@ vim.keymap.set("v", "<Right>", "<nop>")
 
 -- Map :update to leader w for faster saves
 vim.keymap.set("n", "<leader>w", ":update<CR>")
+
+-- Easier start / end line navigations from the home row
+vim.keymap.set("", "H", "_")
+vim.keymap.set("", "L", "g_")
