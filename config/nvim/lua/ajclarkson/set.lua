@@ -17,3 +17,7 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
+vim.opt.conceallevel = 2
+
+vim.opt.hidden = true
+vim.signcolumn = yes

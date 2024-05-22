@@ -42,6 +42,7 @@ home_apps="\
     steam \
     balenaetcher \
     vlc \
+    sonos \
 "
 
 brew tap $taps
