@@ -21,4 +21,7 @@ FROM_DIR="$CONFIG_DIR/tmux"
 TARGET_DIR=~/.config/tmux
 symlink_dir "$FROM_DIR" "$TARGET_DIR"
 
+FROM_DIR_TMUXINATOR="$CONFIG_DIR/tmuxinator"
+TARGET_DIR_TMUXINATOR=~/.config/tmuxinator
+symlink_files "$FROM_DIR_TMUXINATOR" "$TARGET_DIR_TMUXINATOR"
 log_success "Successfully configured tmux"

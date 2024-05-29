@@ -1,0 +1,9 @@
+name: dotfiles
+root: ~/workspace/dotfiles
+
+windows:
+  - editor:
+    - nvim
+  - terminal:
+    - fish
+    - clear

@@ -14,4 +14,5 @@ TARGET_DIR=~/.config/obsidian
 mkdir -p $TARGET_DIR
 symlink_files "$FROM_DIR" "$TARGET_DIR"
 
+ln -s ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Second\ Brain/ ~/workspace/second_brain
 log_success "Successfully configured Obsidian"
