@@ -50,3 +50,9 @@ vim.keymap.set("n", "<leader>w", ":update<CR>")
 -- Easier start / end line navigations from the home row
 vim.keymap.set("", "H", "_")
 vim.keymap.set("", "L", "g_")
+
+-- Easier split navigation
+vim.keymap.set("", "<C-h>", "<C-w><left>")
+vim.keymap.set("", "<C-j>", "<C-w><down>")
+vim.keymap.set("", "<C-k>", "<C-w><up>")
+vim.keymap.set("", "<C-l>", "<C-w><right>")
