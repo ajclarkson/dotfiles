@@ -77,7 +77,11 @@ local plugins = {
           }
     },
 
-    'tpope/vim-fugitive'
+    'tpope/vim-fugitive',
+    {
+        "shortcuts/no-neck-pain.nvim", 
+        version = "*"
+    },
 }
 
 require("lazy").setup(plugins, {})
