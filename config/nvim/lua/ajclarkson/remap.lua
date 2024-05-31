@@ -1,3 +1,6 @@
+-- Set a better leader key
+vim.g.mapleader = " "
+
 -- A different way to get into the default file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
