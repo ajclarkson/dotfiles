@@ -1,0 +1,6 @@
+name: notes
+root: ~/workspace/second_brain
+
+windows:
+  - editor:
+    - nvim
