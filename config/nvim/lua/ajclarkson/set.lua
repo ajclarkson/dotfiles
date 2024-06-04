@@ -20,3 +20,5 @@ vim.opt.conceallevel = 2
 
 vim.opt.hidden = true
 vim.signcolumn = "yes"
+
+vim.opt.linebreak = true
