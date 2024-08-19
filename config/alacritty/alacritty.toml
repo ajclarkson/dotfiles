@@ -1,0 +1,15 @@
+import = [ "~/.config/alacritty/kanagawa-wave.toml" ]
+live_config_reload = true
+
+[font]
+size = 13
+offset.x = 0
+offset.y = 10
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[window.padding]
+x = 20
+y = 20
