@@ -33,9 +33,6 @@ if status is-interactive
     abbr mux 'tmuxinator'
     abbr ts 'tmuxinator start'
 
-    # Fix ssh with kitty
-    abbr ssh 'kitty +kitten ssh '
-
     # Open obsidian vault
     abbr vault 'cd /Users/adam.clarkson/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Second\ Brain/ && tmuxinator'
 end
