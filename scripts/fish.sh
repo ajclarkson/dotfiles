@@ -22,6 +22,7 @@ TARGET_DIR=~/.config/fish
 symlink "$FROM_DIR/config.fish" "$TARGET_DIR/config.fish"
 symlink_dir "$FROM_DIR/ajclarkson" "$TARGET_DIR/ajclarkson"
 symlink_files "$FROM_DIR/functions/*" "$TARGET_DIR/functions"
+symlink_dir "$FROM_DIR/themes" "$TARGET_DIR/themes"
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 FISH_PATH=/usr/local/bin/fish

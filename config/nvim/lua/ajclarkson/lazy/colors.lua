@@ -1,5 +1,5 @@
 function SetColors(color) 
-    color = color or "kanagawa"
+    color = color or "rose-pine"
     vim.cmd.colorscheme(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -9,8 +9,11 @@ end
 
 
 return {
-    'rebelot/kanagawa.nvim',
+    'rose-pine/neovim',
     config = function()
+        require('rose-pine').setup({
+                disable_background = true,
+        })
         SetColors()
     end
 }
