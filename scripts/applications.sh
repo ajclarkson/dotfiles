@@ -12,6 +12,7 @@ log_start "Installing common applications"
 
 taps="homebrew/cask-fonts"
 core_apps="\
+    font-hack-nerd-font \
     font-fira-code \
     font-caskaydia-cove-nerd-font \
     raycast \

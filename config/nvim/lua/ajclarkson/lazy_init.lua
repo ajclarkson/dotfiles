@@ -12,5 +12,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("ajclarkson.lazy")
-
+require("lazy").setup("ajclarkson.lazy", {
+    change_detection = {
+        notify = false
+    }
+})

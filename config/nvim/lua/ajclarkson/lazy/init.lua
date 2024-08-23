@@ -7,6 +7,9 @@ return {
         'airblade/vim-gitgutter',
     },
     {
-        'tpope/vim-surround',
+        'tpope/vim-surround'
+    },
+    {
+        'ThePrimeagen/vim-be-good',
     },
 }
