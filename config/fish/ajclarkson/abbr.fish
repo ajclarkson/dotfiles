@@ -17,10 +17,6 @@ if status is-interactive
     # Good looking lists
     abbr ll 'exa -la --git --icons'
 
-    # Better / colored cat command
-    abbr cat 'bat'
-    abbr ccat 'cat'
-
     # Grab your ip address
     abbr ip "echo Your ip is; dig +short myip.opendns.com @resolver1.opendns.com;"
 
