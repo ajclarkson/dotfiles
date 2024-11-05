@@ -44,6 +44,7 @@ home_apps="\
     balenaetcher \
     vlc \
     sonos \
+    1password-cli \
 "
 
 brew tap $taps
