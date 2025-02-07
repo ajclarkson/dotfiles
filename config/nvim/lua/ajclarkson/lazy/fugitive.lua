@@ -1,7 +1,19 @@
+local toggle_fugitive = function()
+    local winIds = vim.api.nvim_list_wins()
+    for _, id in pairs(winIds) do
+        local status = pcall(vim.api.nvim_win_get_var, id, "fugitive_status")
+        if status then
+            vim.api.nvim_win_close(id, false)
+            return
+        end
+    end
+    vim.cmd("Git")
+end
+
 return {
     'tpope/vim-fugitive',
     config = function()
-        vim.keymap.set("n", "<leader>gs", "<cmd>:0G<CR>")
+        vim.keymap.set("n", "<leader>gs", toggle_fugitive)
         local ajclarkson_fugitive = vim.api.nvim_create_augroup("ajclarkson_fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
