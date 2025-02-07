@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("ajclarkson.lazy", {
+    rocks = { enabled = false },
     change_detection = {
         notify = false
     }

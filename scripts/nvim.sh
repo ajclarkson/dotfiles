@@ -26,8 +26,4 @@ FROM_DIR="$CONFIG_DIR/nvim"
 TARGET_DIR=~/.config/nvim
 symlink_dir "$FROM_DIR" "$TARGET_DIR"
 
-# Install packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 log_success "Successfully configured nvim"
