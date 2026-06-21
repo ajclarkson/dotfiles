@@ -1,8 +1,7 @@
 .env
 .DS_Store
-config/tmux/plugins
-config/nvim/plugin/packer_compiled.lua
-config/fish/fish_variables
-config/nvim/.netrwhist
-config/fish/ajclarkson/secrets.fish
-config/alacritty/*.bak
+fish/.config/fish/fish_variables
+fish/.config/fish/ajclarkson/secrets.fish
+nvim/.config/nvim/.netrwhist
+tmux/.config/tmux/plugins
+alacritty/.config/alacritty/*.bak

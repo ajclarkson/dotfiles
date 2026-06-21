@@ -1,17 +1,10 @@
 #!/usr/bin/env sh
-ROOT_DIR=$1
-source "$ROOT_DIR/commands/__util.sh"
-OS=$3
-
-valid=("mac")
-check_os_compatibility "mac" "$OS" $valid
-
-log_start "Configuring mac global defaults"
+set -e
 
 echo "Show the ~/Library folder in Finder"
 chflags nohidden ~/Library
 
-echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+echo "Enable full keyboard access for all controls"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 echo "Enable subpixel font rendering on non-Apple LCDs"
@@ -32,7 +25,7 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 echo "Set a shorter Delay until key repeat"
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-echo "disabling smart quotes and dashes..."
+echo "Disable smart quotes and dashes"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
@@ -47,20 +40,17 @@ echo "Expand print panel by default"
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-echo "Hide 'recent applications' from dock"
+echo "Hide recent applications from dock"
 defaults write com.apple.dock show-recents -bool false
 
 echo "Only show active apps in dock"
-defaults write com.apple.dock static-only -bool true; killall Dock
+defaults write com.apple.dock static-only -bool true
 
 echo "Disable CMD+space for spotlight"
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist -c "Set AppleSymbolicHotKeys:64:enabled false"
-
-echo "Update Apple developer utils"
-softwareupdate --all --install --force
 
 for app in "Dock" "Finder" "SystemUIServer"; do
   killall "${app}" &> /dev/null
 done
 
-log_success "Configured global defaults successfully"
+echo "Done! Some changes may require a logout to take effect."
