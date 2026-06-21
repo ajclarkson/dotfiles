@@ -10,8 +10,7 @@ Each top-level directory is a stow package that mirrors the target filesystem fr
 alacritty/  → ~/.config/alacritty/
 bat/        → ~/.config/bat/
 fish/       → ~/.config/fish/
-git/        → ~/.gitconfig, ~/.gitignore, ~/.gitconfig-public-user
-git-work/   → ~/.gitconfig-work-user  (work machines only)
+git/        → ~/.gitconfig, ~/.gitignore, ~/.gitconfig-public-user, ~/.gitconfig-work-user
 nvim/       → ~/.config/nvim/
 qmk/        → ~/.config/qmk/          (home machines only)
 tmux/       → ~/.config/tmux/
@@ -42,11 +41,8 @@ If everything is already installed and you just need the symlinks:
 cd ~/workspace/dotfiles
 stow alacritty bat fish git nvim tmux tmuxinator
 
-# home machines
+# home machines only
 stow qmk
-
-# work machines
-stow git-work
 ```
 
 ## Updating

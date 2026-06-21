@@ -43,9 +43,7 @@ cd "$DOTFILES_DIR"
 stow alacritty bat fish nvim tmux tmuxinator git
 
 # Stow environment packages
-if [ "$SETUP_MODE" = "work" ]; then
-  stow git-work
-elif [ "$SETUP_MODE" = "home" ]; then
+if [ "$SETUP_MODE" = "home" ]; then
   stow qmk
 fi
 
