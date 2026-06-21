@@ -28,12 +28,15 @@ brew install --cask \
   rectangle \
   google-chrome \
   1password \
-  slack
+  slack \
+  terraform \
+  tfenv \
+  claude-code
 
 if [ "$SETUP_MODE" = "work" ]; then
   brew install --cask meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
-  brew install --cask mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox
+  brew install --cask mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox k9s k3sup helm flux
 fi
 
 # Stow common packages
