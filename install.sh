@@ -28,14 +28,12 @@ brew install --cask \
   rectangle \
   google-chrome \
   1password \
-  zwift \
-  spotify \
-  qmk-toolbox
+  slack
 
 if [ "$SETUP_MODE" = "work" ]; then
-  brew install --cask slack meetingbar
+  brew install --cask meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
-  brew install --cask mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli
+  brew install --cask mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox
 fi
 
 # Stow common packages
