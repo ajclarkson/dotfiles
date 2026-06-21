@@ -1,57 +1,70 @@
 # dotfiles
 
-These dotfiles are an ongoing configuration of my machine setups. It holds configuration for regularly used tools such as Fish and NeoVim, but it also contains setup scripts to install all of my commonly used tools and applications.
+Personal machine configuration for Fish, Neovim, tmux, git, and more. Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-As the repository is used across several machines it has support for installing on Mac (intel + arm) and Debian to meet my needs.
+## Structure
 
-## Usage
+Each top-level directory is a stow package that mirrors the target filesystem from `$HOME`:
 
-
-### Pre-requisites
-
-You must have a `.env` file at the root of the repository before running the install script. You can find a `.env.sample` which outlines the options.
-
-When running the `appliations` installer on mac, it will use the [`mas`](https://github.com/mas-cli/mas) client to interact with the AppStore. The `mas signin` command does not work on recent versions of OSX, so you must have recently opened the Mac App Store so that the credentials are refreshed in order for this to work. 
-
-**N.B** When I run this on a machine with cloudflare WARP running, some of the tools fail with certificate errors.
-
-## Installing
-
-The `./dotfiles` script at the root of the repository is the entry point to everything. To bootstrap everything:
-
-```bash
-~/path/to/repo/dotfiles install
+```
+alacritty/  → ~/.config/alacritty/
+bat/        → ~/.config/bat/
+fish/       → ~/.config/fish/
+git/        → ~/.gitconfig, ~/.gitignore, ~/.gitconfig-public-user
+git-work/   → ~/.gitconfig-work-user  (work machines only)
+nvim/       → ~/.config/nvim/
+qmk/        → ~/.config/qmk/          (home machines only)
+tmux/       → ~/.config/tmux/
+tmuxinator/ → ~/.config/tmuxinator/
 ```
 
-The install script has been modularised, so you can also provide a script argument to run one module in isolation.
+## Fresh install
 
-```bash
-~/path/to/repo/dotfiles install [SCRIPT]
+```sh
+git clone git@github.com:ajclarkson/dotfiles.git ~/workspace/dotfiles
+cd ~/workspace/dotfiles
+./install.sh [home|work]
 ```
 
-The `[SCRIPT]` argument can be the name of any script in the `scripts/` directory.
+This installs Homebrew (if needed), CLI tools, applications, stows all packages, sets up Node via fnm, and sets Fish as the default shell.
 
-## Configuration
+After installing, apply macOS system defaults:
 
-The `.env` file supports the following options for configuring the setup
+```sh
+./macos.sh
+```
 
-### SETUP_MODE
+## Adding a machine to an existing install
 
-`SETUP_MODE=[default,home,work]`
+If everything is already installed and you just need the symlinks:
 
-This variable controls applying specific settings for each of my machines. Some scripts (particularly the `utils` and `applications` setup scripts) contain conditional blocks to control which dependencies are installed based on this variable.
+```sh
+cd ~/workspace/dotfiles
+stow alacritty bat fish git nvim tmux tmuxinator
 
-## Manual steps
+# home machines
+stow qmk
 
-### Applications install script
-- logitune is installed by cask, but right now the formula only grabs the installer. The logs will output a command to open it **but this is a manual step which must be completed on the first run**. If it isn't completed, subsequent runs will still display the "logitune is already installed" message, even though it actually isn't.
+# work machines
+stow git-work
+```
 
-### Obsidian
-- vimrc plugin is required, and needs to be configured with a relative path to look for its `.obsidian.vimrc` under `~/.config/obsidian`
+## Updating
+
+```sh
+./update.sh
+```
+
+Runs macOS software updates, updates Node via fnm, and upgrades Homebrew packages.
+
+## Notes
+
+- Secrets (Slack tokens, API keys) live in `fish/.config/fish/ajclarkson/secrets.fish` which is gitignored
+- Git identity is handled automatically via `includeIf` in `.gitconfig` — the correct user config is picked based on the remote URL
+- tmux plugins are managed by [tpm](https://github.com/tmux-plugins/tpm) at `~/.tmux/plugins/`, not in this repo. Install them with `prefix + I` inside tmux after first run
+- Cloudflare WARP can cause certificate errors during install — disable it first if you hit issues
 
 ## Credit
 
-Much inspiration taken from the approaches in:
+- [ThePrimeagen Neovim setup](https://www.youtube.com/watch?v=w7i4amO_zaE)
 - [stefanjudis](https://github.com/stefanjudis/dotfiles)
-- [mihaliak](https://github.com/mihaliak/dotfiles/blob/master/bin/dotfiles)
-- [ThePrimeagen NeoVim setup](https://www.youtube.com/watch?v=w7i4amO_zaE)
