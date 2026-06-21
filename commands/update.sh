@@ -6,8 +6,7 @@ source "$ROOT_DIR/commands/__util.sh"
 log_start "Updating package managers and packages"
 
 sudo softwareupdate -i -a
-source ~/.nvm/nvm.sh #install path of fischer nvm
-nvm install --lts --latest-npm # install last lts node instance
+fnm install --lts --latest
 brew update
 brew upgrade
 

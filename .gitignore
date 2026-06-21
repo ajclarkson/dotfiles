@@ -3,6 +3,6 @@
 config/tmux/plugins
 config/nvim/plugin/packer_compiled.lua
 config/fish/fish_variables
-lazy-lock.json
+config/nvim/.netrwhist
 config/fish/ajclarkson/secrets.fish
 config/alacritty/*.bak

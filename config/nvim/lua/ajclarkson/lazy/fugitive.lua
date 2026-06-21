@@ -14,6 +14,18 @@ return {
     'tpope/vim-fugitive',
     config = function()
         vim.keymap.set("n", "<leader>gs", toggle_fugitive)
+
+        vim.keymap.set("n", "<leader>gb", function()
+            require("telescope.builtin").git_branches({ show_remote_tracking_branches = true })
+        end)
+
+        vim.keymap.set("n", "<leader>gB", function()
+            local name = vim.fn.input("New branch: ")
+            if name ~= "" then
+                vim.cmd("Git checkout -b " .. name)
+            end
+        end)
+
         local ajclarkson_fugitive = vim.api.nvim_create_augroup("ajclarkson_fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd

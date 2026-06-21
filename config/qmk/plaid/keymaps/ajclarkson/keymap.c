@@ -157,7 +157,6 @@ void eeconfig_init_user(void) {  // EEPROM is getting reset!
   led_config.red_mode = LEDMODE_ON;
   led_config.green_mode = LEDMODE_MODS;
       eeconfig_update_user(led_config.raw);
-  eeconfig_update_user(led_config.raw);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -225,12 +224,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
-        print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY);
       }
       return false;
-      break;
-     break;
     case LED_1:
       if (record->event.pressed) {
         if (led_config.red_mode==LEDMODE_ON) {

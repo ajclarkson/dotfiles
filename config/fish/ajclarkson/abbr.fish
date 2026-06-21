@@ -30,5 +30,5 @@ if status is-interactive
     abbr ts 'tmuxinator start'
 
     # Open obsidian vault
-    abbr vault 'cd /Users/adam.clarkson/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Second\ Brain/ && tmuxinator'
+    abbr vault 'cd "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/" && tmuxinator'
 end

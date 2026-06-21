@@ -8,7 +8,7 @@ SETUP_MODE="default"
 SUB_COMMAND=$2
 
 if [ -f "$ROOT_DIR/.env" ]; then
-  export $(cat .env | xargs)
+  . "$ROOT_DIR/.env"
 fi
 
 if [ -e "$COMMAND" ]; then

@@ -10,7 +10,6 @@ valid=("mac")
 check_os_compatibility "applications" "$OS" $valid
 log_start "Installing common applications"
 
-taps="homebrew/cask-fonts"
 core_apps="\
     font-hack-nerd-font \
     font-fira-code \
@@ -47,7 +46,6 @@ home_apps="\
     1password-cli \
 "
 
-brew tap $taps
 brew install --cask $core_apps
 
 if [ $SETUP_MODE = "work" ]; then

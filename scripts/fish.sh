@@ -35,7 +35,7 @@ if [ $SHELL = $FISH_PATH ]; then
     echo "Shell is already set to fish @$FISH_PATH"
 else
     echo "Setting default shell to fish @ $FISH_PATH"
-    sudo sh -c 'echo $FISH_PATH >> /etc/shells'
+    sudo sh -c "echo $FISH_PATH >> /etc/shells"
     chsh -s $FISH_PATH
 fi
 

@@ -10,7 +10,7 @@ vim.opt.smartindent = true
 
 vim.opt.incsearch = true
 
-vim.termguicolors = true
+vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 
@@ -19,6 +19,6 @@ vim.opt.updatetime = 50
 vim.opt.conceallevel = 2
 
 vim.opt.hidden = true
-vim.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
 vim.opt.linebreak = true
