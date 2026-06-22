@@ -1,0 +1,21 @@
+[user]
+    name = Adam Clarkson
+    email = adam@ajclarkson.co.uk
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.ocado.tech*/**"]
+    path = config-work
+
+[core]
+    editor = nvim
+
+[push]
+    default = current
+
+[pull]
+    rebase = false
+
+[fetch]
+    prune = true
+
+[delta]
+    side-by-side = true
