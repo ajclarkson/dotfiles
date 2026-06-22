@@ -10,7 +10,7 @@ Each top-level directory is a stow package that mirrors the target filesystem fr
 alacritty/  → ~/.config/alacritty/
 bat/        → ~/.config/bat/
 fish/       → ~/.config/fish/
-git/        → ~/.gitconfig, ~/.gitignore, ~/.gitconfig-public-user, ~/.gitconfig-work-user
+git/        → ~/.config/git/config, ~/.config/git/ignore, ~/.config/git/config-work
 nvim/       → ~/.config/nvim/
 qmk/        → ~/.config/qmk/          (home machines only)
 tmux/       → ~/.config/tmux/
@@ -56,7 +56,7 @@ Runs macOS software updates, updates Node via fnm, and upgrades Homebrew package
 ## Notes
 
 - Secrets (Slack tokens, API keys) live in `fish/.config/fish/ajclarkson/secrets.fish` which is gitignored
-- Git identity is handled automatically via `includeIf` in `.gitconfig` — the correct user config is picked based on the remote URL
+- Git config lives at `~/.config/git/config` (XDG). Work identity is included via `includeIf` when the remote matches the work GitLab host
 - tmux plugins are managed by [tpm](https://github.com/tmux-plugins/tpm) at `~/.tmux/plugins/`, not in this repo. Install them with `prefix + I` inside tmux after first run
 - Cloudflare WARP can cause certificate errors during install — disable it first if you hit issues
 
