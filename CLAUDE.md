@@ -9,7 +9,7 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 | `alacritty/` | `~/.config/alacritty/` |
 | `bat/` | `~/.config/bat/` |
 | `fish/` | `~/.config/fish/` (partial — real dir with other fish-managed files) |
-| `git/` | `~/` |
+| `git/` | `~/.config/git/` |
 | `nvim/` | `~/.config/nvim/` |
 | `qmk/` | `~/.config/qmk/` |
 | `tmux/` | `~/.config/tmux/` |
@@ -20,11 +20,6 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 To stow everything: `stow alacritty bat fish git nvim tmux tmuxinator`
 
 ## Known quirks
-
-**`~/.gitignore` isn't stowed automatically.** Stow skips `.gitignore` by default (treated as a VCS file). Create it manually:
-```sh
-ln -s workspace/dotfiles/git/.gitignore ~/.gitignore
-```
 
 **`fish/` is a partial stow target.** `~/.config/fish/` is a real directory (fish manages files there itself). Stow creates symlinks for `config.fish` and `ajclarkson/` inside it, leaving fish's own files untouched.
 
