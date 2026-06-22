@@ -17,6 +17,7 @@ live_config_reload = true
 import = [ "~/.config/alacritty/rose-pine.toml" ]
 
 [[keyboard.bindings]]
+# Shift+Return sends ESC+Enter to work correctly in tmux
 key = "Return"
 mods = "Shift"
-chars = "\r"
+chars = "\u001b\r"
