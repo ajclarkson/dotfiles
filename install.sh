@@ -12,7 +12,7 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # CLI tools
-brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd tfenv tree-sitter
+brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd tfenv tree-sitter 
 
 # Core apps
 brew install --cask --adopt \
@@ -33,7 +33,8 @@ whatsapp \
 if [ "$SETUP_MODE" = "work" ]; then
   brew install --cask --adopt meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
-  brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox k9s k3sup helm flux
+  brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox
+  brew install k9s k3sup helm flux
 fi
 
 # Stow common packages
