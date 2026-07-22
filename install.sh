@@ -12,36 +12,33 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # CLI tools
-brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd
+brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd tfenv tree-sitter
 
 # Core apps
-brew install --cask \
-  alacritty \
+brew install --cask --adopt \
+  ghostty \
   font-hack-nerd-font \
   font-fira-code \
   font-caskaydia-cove-nerd-font \
   raycast \
   bartender \
-  logitune \
-  whatsapp \
+whatsapp \
   appcleaner \
   rectangle \
   google-chrome \
   1password \
   slack \
-  terraform \
-  tfenv \
   claude-code
 
 if [ "$SETUP_MODE" = "work" ]; then
-  brew install --cask meetingbar
+  brew install --cask --adopt meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
-  brew install --cask mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox k9s k3sup helm flux
+  brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox k9s k3sup helm flux
 fi
 
 # Stow common packages
 cd "$DOTFILES_DIR"
-stow alacritty bat fish nvim tmux git
+stow ghostty bat fish nvim tmux git
 
 # Stow environment packages
 if [ "$SETUP_MODE" = "home" ]; then
@@ -49,11 +46,9 @@ if [ "$SETUP_MODE" = "home" ]; then
 fi
 
 # Node
+cd "$HOME"
 fnm install --lts
 fnm default lts-latest
-fnm use lts-latest
-npm i -g npm
-npm i -g tree-sitter-cli
 
 # Fish as default shell
 FISH_PATH=/usr/local/bin/fish
@@ -67,9 +62,9 @@ if [ "$SHELL" != "$FISH_PATH" ]; then
 fi
 
 # Fisher
-fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+fish -c "if not type -q fisher; curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher; end"
 
 # TPM
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "Done! Run ./macos.sh to apply system defaults, then restart your shell."
