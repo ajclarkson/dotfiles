@@ -1,7 +1,10 @@
 return {
     'APZelos/blamer.nvim',
     config = function()
-        vim.g.blamer_enabled = 1
+        vim.g.blamer_enabled = 0
+        vim.g.blamer_relative_time = 1
+        vim.g.blamer_delay = 250
+        vim.keymap.set("n", "<leader>bl", ":BlamerToggle<CR>", { silent = true })
         -- Override to guard against oil:// virtual paths, which confuse git
         -- and cause errors because a git hook prints to stdout before the
         -- fatal error, breaking blamer's own 'fatal' prefix check.

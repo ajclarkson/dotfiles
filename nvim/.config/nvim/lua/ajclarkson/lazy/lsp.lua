@@ -29,10 +29,13 @@ return {
                 "ts_ls",
                 "eslint",
                 "lua_ls",
+                "yamlls",
+                "marksman",
+                "jdtls",
+                "bashls",
             },
             handlers = {
-                function(server_name) -- default handler (optional)
-
+                function(server_name)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
@@ -44,12 +47,47 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-				    runtime = { version = "Lua 5.1" },
+                                runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 }
                             }
                         }
+                    }
+                end,
+
+                ["yamlls"] = function()
+                    require("lspconfig").yamlls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            yaml = {
+                                schemas = {
+                                    ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yml,yaml}",
+                                    ["https://json.schemastore.org/github-action.json"] = ".github/actions/*/action.{yml,yaml}",
+                                    ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = ".gitlab-ci.{yml,yaml}",
+                                },
+                                validate = true,
+                                completion = true,
+                            }
+                        }
+                    }
+                end,
+
+                -- jdtls needs its own data dir per workspace to avoid conflicts
+                ["jdtls"] = function()
+                    local workspace = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+                    require("lspconfig").jdtls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            java = {
+                                configuration = {
+                                    updateBuildConfiguration = "interactive",
+                                },
+                            }
+                        },
+                        init_options = {
+                            workspaceFolders = vim.fn.stdpath("data") .. "/jdtls-workspace/" .. workspace,
+                        },
                     }
                 end,
             }
