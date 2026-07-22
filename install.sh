@@ -66,5 +66,6 @@ fish -c "if not type -q fisher; curl -sL https://raw.githubusercontent.com/jorge
 
 # TPM
 [ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
 
 echo "Done! Run ./macos.sh to apply system defaults, then restart your shell."
