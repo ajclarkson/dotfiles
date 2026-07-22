@@ -3,7 +3,11 @@ root: ~/workspace/dotfiles
 
 windows:
   - editor:
-    - nvim
+      layout: even-horizontal
+      panes:
+        - nvim .
+        - claude
+
   - terminal:
-    - fish
-    - clear
+      panes:
+        - fish
