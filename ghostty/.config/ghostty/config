@@ -22,6 +22,9 @@ theme = Rose Pine
 # based on github.com/lukejanicke/ghostty-app-icons, recolored to Iris (#c4a7e7)
 macos-icon = custom
 
+# Hide the titlebar proxy icon — it always shows the CWD's folder icon (macOS-drawn, not themeable)
+macos-titlebar-proxy-icon = hidden
+
 # Keybindings
 # Shift+Return → ESC+Enter (tmux compatibility, mirrors Alacritty binding)
 keybind = shift+enter=text:\x1b\r
