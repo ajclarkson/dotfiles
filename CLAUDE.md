@@ -9,6 +9,7 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 | `alacritty/` | `~/.config/alacritty/` |
 | `bat/` | `~/.config/bat/` |
 | `fish/` | `~/.config/fish/` (partial — real dir with other fish-managed files) |
+| `ghostty/` | `~/.config/ghostty/` |
 | `git/` | `~/.config/git/` |
 | `nvim/` | `~/.config/nvim/` |
 | `qmk/` | `~/.config/qmk/` |
@@ -16,13 +17,15 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 
 `.stowrc` sets `--target=~` so `stow <package>` works without flags.
 
-To stow everything: `stow alacritty bat fish git nvim tmux`
+To stow everything: `stow alacritty bat fish ghostty git nvim tmux`
 
 ## Known quirks
 
 **`fish/` is a partial stow target.** `~/.config/fish/` is a real directory (fish manages files there itself). Stow creates symlinks for `config.fish` and `ajclarkson/` inside it, leaving fish's own files untouched.
 
 **`nvim/` is tree-folded.** Stow symlinks the whole `~/.config/nvim` directory. `lazy-lock.json` lives there but is gitignored — it won't appear as a tracked change.
+
+**`ghostty/` is tree-folded.** Stow symlinks the whole `~/.config/ghostty` directory. Ghostty doesn't reliably hot-reload config/icon changes pulled via git — fully quit (Cmd+Q) and relaunch after pulling changes to this package.
 
 ## Gitignored local files
 
