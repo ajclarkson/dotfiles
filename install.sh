@@ -53,6 +53,7 @@ fnm install --lts
 fnm default lts-latest
 fnm use lts-latest
 npm i -g npm
+npm i -g tree-sitter-cli
 
 # Fish as default shell
 FISH_PATH=/usr/local/bin/fish
