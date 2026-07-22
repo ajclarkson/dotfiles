@@ -41,7 +41,7 @@ fi
 
 # Stow common packages
 cd "$DOTFILES_DIR"
-stow alacritty bat fish nvim tmux tmuxinator git
+stow alacritty bat fish nvim tmux git
 
 # Stow environment packages
 if [ "$SETUP_MODE" = "home" ]; then

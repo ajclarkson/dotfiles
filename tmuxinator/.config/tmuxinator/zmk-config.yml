@@ -1,9 +1,0 @@
-name: zmk-config
-root: ~/workspace/zmk-config
-
-windows:
-  - editor:
-    - nvim
-  - terminal:
-    - fish
-    - clear

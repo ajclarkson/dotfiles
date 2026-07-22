@@ -13,11 +13,10 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 | `nvim/` | `~/.config/nvim/` |
 | `qmk/` | `~/.config/qmk/` |
 | `tmux/` | `~/.config/tmux/` |
-| `tmuxinator/` | `~/.config/tmuxinator/` |
 
 `.stowrc` sets `--target=~` so `stow <package>` works without flags.
 
-To stow everything: `stow alacritty bat fish git nvim tmux tmuxinator`
+To stow everything: `stow alacritty bat fish git nvim tmux`
 
 ## Known quirks
 
