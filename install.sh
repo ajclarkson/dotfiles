@@ -34,7 +34,7 @@ if [ "$SETUP_MODE" = "work" ]; then
   brew install --cask --adopt meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
   brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox
-  brew install k9s k3sup helm flux
+  brew install k9s k3sup helm fluxcd/tap/flux
 fi
 
 # Stow common packages
