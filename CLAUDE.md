@@ -8,6 +8,7 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 |---|---|
 | `alacritty/` | `~/.config/alacritty/` |
 | `bat/` | `~/.config/bat/` |
+| `claude/` | `~/.claude/` (partial — real dir with session/cache/credentials, only specific files stowed) |
 | `fish/` | `~/.config/fish/` (partial — real dir with other fish-managed files) |
 | `ghostty/` | `~/.config/ghostty/` |
 | `git/` | `~/.config/git/` |
@@ -17,9 +18,11 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 
 `.stowrc` sets `--target=~` so `stow <package>` works without flags.
 
-To stow everything: `stow alacritty bat fish ghostty git nvim tmux`
+To stow everything: `stow alacritty bat claude fish ghostty git nvim tmux`
 
 ## Known quirks
+
+**`claude/` is a partial stow target.** `~/.claude/` is a real directory full of session state, caches, and `.credentials.json` — none of that is tracked. Only `statusline-command.sh` is stowed. It self-detects which machine it's on: if the `claude-usage` binary is present (work) it shows today's/average spend, otherwise it falls back to reading `.rate_limits.five_hour`/`.seven_day` from the statusline JSON (personal, Pro/Max plan). `~/.claude/settings.json` (which points `statusLine` at this script and holds work-only hooks/MCP config) is machine-specific and intentionally not stowed — it must already point to `~/.claude/statusline-command.sh` on each machine for this to take effect.
 
 **`fish/` is a partial stow target.** `~/.config/fish/` is a real directory (fish manages files there itself). Stow creates symlinks for `config.fish` and `ajclarkson/` inside it, leaving fish's own files untouched.
 
