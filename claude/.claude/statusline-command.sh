@@ -118,18 +118,29 @@ elif [ -n "$five_h_pct" ] || [ -n "$week_pct" ]; then
     fi
 fi
 
-parts=("🐢 ${c_pine}${short_cwd}${c_reset}${git_info}")
-[ -n "$model_info" ] && parts+=("$model_info")
-[ -n "$ctx_info" ] && parts+=("$ctx_info")
-[ -n "$spend_info" ] && parts+=("$spend_info")
+line1_parts=("🐢 ${c_pine}${short_cwd}${c_reset}${git_info}")
+[ -n "$model_info" ] && line1_parts+=("$model_info")
 
-out=""
-for p in "${parts[@]}"; do
-    if [ -z "$out" ]; then
-        out="$p"
-    else
-        out="${out}${sep}${p}"
-    fi
-done
+line2_parts=()
+[ -n "$ctx_info" ] && line2_parts+=("$ctx_info")
+[ -n "$spend_info" ] && line2_parts+=("$spend_info")
+
+join_parts() {
+    local out=""
+    for p in "$@"; do
+        if [ -z "$out" ]; then
+            out="$p"
+        else
+            out="${out}${sep}${p}"
+        fi
+    done
+    printf "%s" "$out"
+}
+
+line1=$(join_parts "${line1_parts[@]}")
+line2=$(join_parts "${line2_parts[@]}")
+
+out="$line1"
+[ -n "$line2" ] && out="${out}\n${line2}"
 
 printf "%b" "$out"
