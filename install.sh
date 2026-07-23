@@ -51,6 +51,9 @@ cd "$HOME"
 fnm install --lts
 fnm default lts-latest
 
+# Fixed npm global install location (see NPM_CONFIG_PREFIX in fish/variables.fish)
+mkdir -p "$HOME/.npm-global"
+
 # Fish as default shell
 FISH_PATH=/usr/local/bin/fish
 if [ "$(uname -m)" = "arm64" ]; then

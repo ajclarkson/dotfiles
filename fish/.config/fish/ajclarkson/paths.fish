@@ -9,4 +9,8 @@ if test -d "$_fnm_default_bin"
     fish_add_path "$_fnm_default_bin"
 end
 
+# Fixed location for npm global installs (see NPM_CONFIG_PREFIX in variables.fish) —
+# keeps global CLIs (e.g. gws) available regardless of which fnm node version is default
+fish_add_path "$NPM_CONFIG_PREFIX/bin"
+
 
