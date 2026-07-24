@@ -39,11 +39,13 @@ fi
 
 # Stow common packages
 cd "$DOTFILES_DIR"
-stow ghostty bat fish nvim tmux git
+stow ghostty bat fish nvim tmux git tmuxinator
 
 # Stow environment packages
 if [ "$SETUP_MODE" = "home" ]; then
-  stow qmk
+  stow qmk tmuxinator-home
+elif [ "$SETUP_MODE" = "work" ]; then
+  stow tmuxinator-work
 fi
 
 # Node

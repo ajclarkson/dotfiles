@@ -14,7 +14,9 @@ git/        → ~/.config/git/config, ~/.config/git/ignore, ~/.config/git/config
 nvim/       → ~/.config/nvim/
 qmk/        → ~/.config/qmk/          (home machines only)
 tmux/       → ~/.config/tmux/
-tmuxinator/ → ~/.config/tmuxinator/
+tmuxinator/      → ~/.config/tmuxinator/ (shared configs)
+tmuxinator-home/ → ~/.config/tmuxinator/ (home machines only)
+tmuxinator-work/ → ~/.config/tmuxinator/ (work machines only)
 ```
 
 ## Fresh install
@@ -42,7 +44,10 @@ cd ~/workspace/dotfiles
 stow alacritty bat fish git nvim tmux tmuxinator
 
 # home machines only
-stow qmk
+stow qmk tmuxinator-home
+
+# work machines only
+stow tmuxinator-work
 ```
 
 ## Updating

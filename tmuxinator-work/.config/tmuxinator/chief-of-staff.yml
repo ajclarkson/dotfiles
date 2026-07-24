@@ -1,0 +1,11 @@
+# /Users/adam.clarkson/.config/tmuxinator/chief-of-staff.yml
+
+name: chief-of-staff
+root: ~/workspace/chief-of-staff
+
+windows:
+  - claude:
+      - fish
+      - clear
+  - nvim:
+      - nvim .

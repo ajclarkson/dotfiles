@@ -1,0 +1,14 @@
+name: robosprey
+root: ~/workspace/robosprey
+pre: tmux set-option -g main-pane-width 66%
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - claude
+        - npx vitest
+  - nvim:
+      - nvim .
+  - term:
+      - fish
