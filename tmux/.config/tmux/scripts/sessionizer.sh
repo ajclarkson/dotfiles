@@ -42,11 +42,15 @@ list_entries() {
 
     : > "$map_file"
 
-    while IFS= read -r session; do
+    # Most-recently-attached first, current session last — so the top
+    # entry (fzf's default selection) is always the *previous* session,
+    # and enter with no typing is a quick toggle back to it.
+    while IFS=$'\t' read -r _ _ session; do
         [ -z "$session" ] && continue
         sessions="${sessions}${session}"$'\n'
         printf '%s %s\n' "$(session_marker "$session")" "$session"
-    done < <(tmux list-sessions -F "#{session_name}" 2>/dev/null)
+    done < <(tmux list-sessions -F "#{session_last_attached}	#{session_attached}	#{session_name}" 2>/dev/null \
+        | sort -t $'\t' -k2,2n -k1,1nr)
 
     while [ "$new_count" -lt "$max_new" ] && IFS= read -r path; do
         case "$path" in "$workspace"/*) ;; *) continue ;; esac
