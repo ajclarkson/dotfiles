@@ -28,3 +28,7 @@ macos-titlebar-proxy-icon = hidden
 # Keybindings
 # Shift+Return → ESC+Enter (tmux compatibility, mirrors Alacritty binding)
 keybind = shift+enter=text:\x1b\r
+# Cmd+V explicitly routed to paste_from_clipboard — works around Ghostty's OSC 52
+# not supporting image MIME types, which breaks image paste in Claude Code.
+# Requires Ghostty to have Accessibility permissions (System Settings > Privacy & Security).
+keybind = performable:super+v=paste_from_clipboard
