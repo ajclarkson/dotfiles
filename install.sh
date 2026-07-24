@@ -12,7 +12,7 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 # CLI tools
-brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd tfenv tree-sitter 
+brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd tfenv tree-sitter zoxide
 
 # Core apps
 brew install --cask --adopt \

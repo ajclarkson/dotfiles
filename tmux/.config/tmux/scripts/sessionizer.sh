@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 # fzf-based tmux session switcher. Lists running sessions (tagged with
-# Claude Code status, if a pane is running claude) plus project dirs under
-# ~/workspace that don't have a session yet. ctrl-x kills the highlighted
-# session without leaving the picker.
+# Claude Code status, if a pane is running claude) plus ~/workspace dirs
+# zoxide knows about that don't have a session yet — frecency-ranked
+# instead of walking the whole tree, so it stays fast and uncluttered
+# even with 100+ clones on disk. ctrl-x kills a session in place.
 set -euo pipefail
 
-search_dirs=("$HOME/workspace")
+workspace="$HOME/workspace"
 
 # One dot per line, colour-coded, so liveness and Claude status share a
 # single unobtrusive glyph rather than a badge per line:
 #   green  ● session running, Claude waiting for input ("✳" in pane title)
 #   yellow ● session running, Claude still working (spinner frame in title)
 #   white  ● session running, no Claude pane
-#   dim    ○ not running yet (a ~/workspace dir)
+#   dim    ○ not running yet (known to zoxide, no session)
 session_marker() {
     local session="$1" title
     title=$(tmux list-panes -t "$session" -F "#{pane_current_command} #{pane_title}" 2>/dev/null \
@@ -26,22 +27,43 @@ session_marker() {
 
 new_marker=$'\033[2m○\033[0m'
 
+# Path map for dir candidates, since a disambiguated name (e.g.
+# "archive_football" for two dirs both called "football") doesn't map
+# 1:1 onto $workspace/<name>.
+map_file="${TMPDIR:-/tmp}/tmux-sessionizer-paths"
+
+# Most zoxide entries a --list run will surface for dirs with no session yet.
+# Ranked by frecency, so it's always the most-recently/often-used ones;
+# anything older is a manual `cd` + `tmux new-session` away.
+max_new=10
+
 list_entries() {
-    local seen=$'\n' session dir path name
+    local sessions=$'\n' dirs_seen=$'\n' session path name parent new_count=0
+
+    : > "$map_file"
+
     while IFS= read -r session; do
         [ -z "$session" ] && continue
-        seen="${seen}${session}"$'\n'
+        sessions="${sessions}${session}"$'\n'
         printf '%s %s\n' "$(session_marker "$session")" "$session"
     done < <(tmux list-sessions -F "#{session_name}" 2>/dev/null)
 
-    for dir in "${search_dirs[@]}"; do
-        [ -d "$dir" ] || continue
-        while IFS= read -r path; do
-            name=$(basename "$path" | tr '.:' '__')
-            case "$seen" in *$'\n'"$name"$'\n'*) continue ;; esac
-            printf '%s %s\n' "$new_marker" "$name"
-        done < <(find "$dir" -mindepth 1 -maxdepth 1 -type d)
-    done
+    while [ "$new_count" -lt "$max_new" ] && IFS= read -r path; do
+        case "$path" in "$workspace"/*) ;; *) continue ;; esac
+        name=$(basename "$path" | tr '.:' '__')
+        case "$sessions" in *$'\n'"$name"$'\n'*) continue ;; esac
+        case "$dirs_seen" in
+            *$'\n'"$name"$'\n'*)
+                parent=$(basename "$(dirname "$path")")
+                name="${parent}_${name}"
+                ;;
+        esac
+        case "$dirs_seen" in *$'\n'"$name"$'\n'*) continue ;; esac
+        dirs_seen="${dirs_seen}${name}"$'\n'
+        new_count=$((new_count + 1))
+        printf '%s\t%s\n' "$name" "$path" >> "$map_file"
+        printf '%s %s\n' "$new_marker" "$name"
+    done < <(zoxide query -l 2>/dev/null)
 }
 
 if [ "${1:-}" = "--list" ]; then
@@ -63,9 +85,10 @@ chosen=$(printf '%s\n' "$entries" | fzf --prompt="session> " --no-preview --ansi
 [ -z "$chosen" ] && exit 0
 
 name=$(echo "$chosen" | awk '{print $NF}')
-path="$HOME/workspace/$name"
 
 if ! tmux has-session -t "=$name" 2>/dev/null; then
+    path=$(awk -F'\t' -v n="$name" '$1 == n { p = $2 } END { print p }' "$map_file")
+    [ -z "$path" ] && path="$workspace/$name"
     tmux new-session -d -s "$name" -c "$path"
 fi
 
