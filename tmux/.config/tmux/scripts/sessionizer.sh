@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # fzf-based tmux session switcher. Lists running sessions (tagged with
-# Claude Code status, if a pane is running claude) plus ~/workspace dirs
-# zoxide knows about that don't have a session yet — frecency-ranked
-# instead of walking the whole tree, so it stays fast and uncluttered
-# even with 100+ clones on disk. ctrl-x kills a session in place.
+# Claude Code status, if a pane is running claude) plus every ~/workspace
+# dir zoxide knows about that doesn't have a session yet — zoxide's
+# frecency order lines up the top pick, but nothing is hidden since fzf's
+# own fuzzy filter handles scale instead of a hard cap. ctrl-x kills a
+# session in place.
 set -euo pipefail
 
 workspace="$HOME/workspace"
@@ -27,18 +28,13 @@ session_marker() {
 
 new_marker=$'\033[2m○\033[0m'
 
-# Path map for dir candidates, since a disambiguated name (e.g.
-# "archive_football" for two dirs both called "football") doesn't map
-# 1:1 onto $workspace/<name>.
+# Path map for dir candidates, since the name (workspace-relative path
+# with "." and ":" scrubbed, e.g. "archive/football") isn't always the
+# literal $workspace/<name> path once scrubbed.
 map_file="${TMPDIR:-/tmp}/tmux-sessionizer-paths"
 
-# Most zoxide entries a --list run will surface for dirs with no session yet.
-# Ranked by frecency, so it's always the most-recently/often-used ones;
-# anything older is a manual `cd` + `tmux new-session` away.
-max_new=10
-
 list_entries() {
-    local sessions=$'\n' dirs_seen=$'\n' session path name parent new_count=0
+    local sessions=$'\n' session path name
 
     : > "$map_file"
 
@@ -52,19 +48,10 @@ list_entries() {
     done < <(tmux list-sessions -F "#{session_last_attached}	#{session_attached}	#{session_name}" 2>/dev/null \
         | sort -t $'\t' -k2,2n -k1,1nr)
 
-    while [ "$new_count" -lt "$max_new" ] && IFS= read -r path; do
+    while IFS= read -r path; do
         case "$path" in "$workspace"/*) ;; *) continue ;; esac
-        name=$(basename "$path" | tr '.:' '__')
+        name=$(echo "${path#"$workspace"/}" | tr '.:' '__')
         case "$sessions" in *$'\n'"$name"$'\n'*) continue ;; esac
-        case "$dirs_seen" in
-            *$'\n'"$name"$'\n'*)
-                parent=$(basename "$(dirname "$path")")
-                name="${parent}_${name}"
-                ;;
-        esac
-        case "$dirs_seen" in *$'\n'"$name"$'\n'*) continue ;; esac
-        dirs_seen="${dirs_seen}${name}"$'\n'
-        new_count=$((new_count + 1))
         printf '%s\t%s\n' "$name" "$path" >> "$map_file"
         printf '%s %s\n' "$new_marker" "$name"
     done < <(zoxide query -l 2>/dev/null)
@@ -93,7 +80,26 @@ name=$(echo "$chosen" | awk '{print $NF}')
 if ! tmux has-session -t "=$name" 2>/dev/null; then
     path=$(awk -F'\t' -v n="$name" '$1 == n { p = $2 } END { print p }' "$map_file")
     [ -z "$path" ] && path="$workspace/$name"
-    tmux new-session -d -s "$name" -c "$path"
+
+    # tmuxinator project config wins if present: project-local
+    # .tmuxinator.yml first, then a same-named config in the shared
+    # tmuxinator dir. Neither found falls back to a plain session.
+    local_config=""
+    home_config=""
+    for ext in yml yaml; do
+        [ -z "$local_config" ] && [ -f "$path/.tmuxinator.$ext" ] && local_config="$path/.tmuxinator.$ext"
+        [ -z "$home_config" ] && [ -f "$HOME/.config/tmuxinator/$(basename "$path").$ext" ] \
+            && home_config="$HOME/.config/tmuxinator/$(basename "$path").$ext"
+    done
+
+    if [ -n "$local_config" ] && command -v tmuxinator >/dev/null 2>&1; then
+        tmuxinator start -p "$local_config" -n "$name" --no-attach
+    elif [ -n "$home_config" ] && command -v tmuxinator >/dev/null 2>&1; then
+        tmuxinator start "$(basename "$path")" -n "$name" --no-attach
+    else
+        tmux new-session -d -s "$name" -c "$path"
+        tmux send-keys -t "$name" "nvim ." Enter
+    fi
 fi
 
 if [ -n "${TMUX:-}" ]; then
