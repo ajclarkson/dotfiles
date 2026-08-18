@@ -1,5 +1,8 @@
 # Set up the path
 
+# Native installers (e.g. Claude Code) drop binaries here
+fish_add_path "$HOME/.local/bin"
+
 # Add homebrew location (Apple Silicon Mac, Intel Mac, or Linuxbrew)
 for brew_bin in /opt/homebrew/bin /usr/local/bin /home/linuxbrew/.linuxbrew/bin
     if test -d $brew_bin
