@@ -12,7 +12,6 @@ bat/        → ~/.config/bat/
 fish/       → ~/.config/fish/
 git/        → ~/.config/git/config, ~/.config/git/ignore, ~/.config/git/config-work
 nvim/       → ~/.config/nvim/
-qmk/        → ~/.config/qmk/          (home machines only)
 tmux/       → ~/.config/tmux/
 tmuxinator/      → ~/.config/tmuxinator/ (shared configs)
 tmuxinator-home/ → ~/.config/tmuxinator/ (home machines only)
@@ -44,7 +43,7 @@ cd ~/workspace/dotfiles
 stow alacritty bat fish git nvim tmux tmuxinator
 
 # home machines only
-stow qmk tmuxinator-home
+stow tmuxinator-home
 
 # work machines only
 stow tmuxinator-work

@@ -13,7 +13,6 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 | `ghostty/` | `~/.config/ghostty/` |
 | `git/` | `~/.config/git/` |
 | `nvim/` | `~/.config/nvim/` |
-| `qmk/` | `~/.config/qmk/` |
 | `tmux/` | `~/.config/tmux/` |
 
 `.stowrc` sets `--target=~` so `stow <package>` works without flags.

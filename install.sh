@@ -3,47 +3,57 @@ set -e
 
 SETUP_MODE=${1:-"default"}
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+OS="$(uname -s)"
 
-echo "Installing dotfiles (mode: $SETUP_MODE)"
+echo "Installing dotfiles (mode: $SETUP_MODE, os: $OS)"
 
-# Homebrew
+# Homebrew (macOS: Homebrew; headless Linux: Linuxbrew)
 if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# CLI tools
+# CLI tools (cross-platform: Homebrew on macOS, Linuxbrew on headless Linux)
 brew install stow git fish fnm neovim tmux tmuxinator bat ripgrep fzf eza curl jq wget coreutils fd tfenv tree-sitter zoxide
 
-# Core apps
-brew install --cask --adopt \
-  ghostty \
-  font-hack-nerd-font \
-  font-fira-code \
-  font-caskaydia-cove-nerd-font \
-  raycast \
-  bartender \
-whatsapp \
-  appcleaner \
-  rectangle \
-  google-chrome \
-  1password \
-  slack \
-  claude-code
+# Claude Code CLI (native installer: same on macOS and Linux, auto-updates)
+curl -fsSL https://claude.ai/install.sh | bash
 
-if [ "$SETUP_MODE" = "work" ]; then
+if [ "$OS" = "Darwin" ]; then
+  # Core GUI apps
+  brew install --cask --adopt \
+    ghostty \
+    font-hack-nerd-font \
+    font-fira-code \
+    font-caskaydia-cove-nerd-font \
+    raycast \
+    bartender \
+whatsapp \
+    appcleaner \
+    rectangle \
+    google-chrome \
+    1password \
+    slack
+fi
+
+if [ "$SETUP_MODE" = "work" ] && [ "$OS" = "Darwin" ]; then
   brew install --cask --adopt meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
-  brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli qmk-toolbox
-  brew install k9s k3sup helm fluxcd/tap/flux
+  brew install k9s k3sup helm fluxcd/tap/flux 1password-cli
+  if [ "$OS" = "Darwin" ]; then
+    brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos
+  fi
 fi
 
 # Stow common packages
 cd "$DOTFILES_DIR"
-stow ghostty bat fish nvim tmux git tmuxinator
+stow bat fish nvim tmux git tmuxinator
+if [ "$OS" = "Darwin" ]; then
+  stow ghostty
+fi
 
 # Stow environment packages
 if [ "$SETUP_MODE" = "home" ]; then
-  stow qmk tmuxinator-home
+  stow tmuxinator-home
 elif [ "$SETUP_MODE" = "work" ]; then
   stow tmuxinator-work
 fi
@@ -57,13 +67,10 @@ fnm default lts-latest
 mkdir -p "$HOME/.npm-global"
 
 # Fish as default shell
-FISH_PATH=/usr/local/bin/fish
-if [ "$(uname -m)" = "arm64" ]; then
-  FISH_PATH=/opt/homebrew/bin/fish
-fi
+FISH_PATH="$(command -v fish)"
 
 if [ "$SHELL" != "$FISH_PATH" ]; then
-  echo "$FISH_PATH" | sudo tee -a /etc/shells
+  grep -qxF "$FISH_PATH" /etc/shells || echo "$FISH_PATH" | sudo tee -a /etc/shells
   chsh -s "$FISH_PATH"
 fi
 
@@ -74,4 +81,8 @@ fish -c "if not type -q fisher; curl -sL https://raw.githubusercontent.com/jorge
 [ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-echo "Done! Run ./macos.sh to apply system defaults, then restart your shell."
+if [ "$OS" = "Darwin" ]; then
+  echo "Done! Run ./macos.sh to apply system defaults, then restart your shell."
+else
+  echo "Done! Restart your shell."
+fi
