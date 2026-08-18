@@ -58,7 +58,7 @@ fi
 
 # Stow common packages
 cd "$DOTFILES_DIR"
-stow bat fish nvim tmux git
+stow bat claude fish nvim tmux git
 if [ "$OS" = "Darwin" ]; then
   stow ghostty
 fi
