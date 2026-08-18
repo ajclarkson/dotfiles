@@ -1,7 +1,11 @@
 # Set up the path
 
-# Add homebrew location for arm mac
-set -g fish_user_paths "/opt/homebrew/bin" $fish_user_paths
+# Add homebrew location (Apple Silicon Mac, Intel Mac, or Linuxbrew)
+for brew_bin in /opt/homebrew/bin /usr/local/bin /home/linuxbrew/.linuxbrew/bin
+    if test -d $brew_bin
+        set -g fish_user_paths $brew_bin $fish_user_paths
+    end
+end
 
 # Add fnm default node bin so npm global tools (e.g. tree-sitter-cli) are available everywhere
 set -l _fnm_default_bin (fnm exec --using=default -- sh -c 'dirname $(which node)' 2>/dev/null)
