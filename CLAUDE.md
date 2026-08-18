@@ -6,7 +6,6 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 
 | Package | Target |
 |---|---|
-| `alacritty/` | `~/.config/alacritty/` |
 | `bat/` | `~/.config/bat/` |
 | `claude/` | `~/.claude/` (partial — real dir with session/cache/credentials, only specific files stowed) |
 | `fish/` | `~/.config/fish/` (partial — real dir with other fish-managed files) |
@@ -17,7 +16,7 @@ GNU Stow-based dotfiles for macOS. Each top-level directory is a stow package th
 
 `.stowrc` sets `--target=~` so `stow <package>` works without flags.
 
-To stow everything: `stow alacritty bat claude fish ghostty git nvim tmux`
+To stow everything: `stow bat claude fish ghostty git nvim tmux`
 
 ## Known quirks
 

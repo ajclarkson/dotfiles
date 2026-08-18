@@ -7,7 +7,6 @@ Personal machine configuration for Fish, Neovim, tmux, git, and more. Managed wi
 Each top-level directory is a stow package that mirrors the target filesystem from `$HOME`:
 
 ```
-alacritty/  → ~/.config/alacritty/
 bat/        → ~/.config/bat/
 fish/       → ~/.config/fish/
 git/        → ~/.config/git/config, ~/.config/git/ignore, ~/.config/git/config-work
@@ -40,7 +39,7 @@ If everything is already installed and you just need the symlinks:
 
 ```sh
 cd ~/workspace/dotfiles
-stow alacritty bat fish git nvim tmux tmuxinator
+stow bat fish git nvim tmux tmuxinator
 
 # home machines only
 stow tmuxinator-home
