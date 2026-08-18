@@ -10,6 +10,18 @@ echo "Installing dotfiles (mode: $SETUP_MODE, os: $OS)"
 # Homebrew (macOS: Homebrew; headless Linux: Linuxbrew)
 if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # A fresh install isn't on PATH yet in this shell; get it there before
+  # any of the brew commands below run
+  if [ "$OS" = "Darwin" ]; then
+    if [ -x /opt/homebrew/bin/brew ]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+      eval "$(/usr/local/bin/brew shellenv)"
+    fi
+  else
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 fi
 
 # CLI tools (cross-platform: Homebrew on macOS, Linuxbrew on headless Linux)
@@ -38,9 +50,9 @@ fi
 if [ "$SETUP_MODE" = "work" ] && [ "$OS" = "Darwin" ]; then
   brew install --cask --adopt meetingbar
 elif [ "$SETUP_MODE" = "home" ]; then
-  brew install k9s k3sup helm fluxcd/tap/flux 1password-cli
+  brew install k9s k3sup helm fluxcd/tap/flux
   if [ "$OS" = "Darwin" ]; then
-    brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos
+    brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli
   fi
 fi
 
