@@ -41,7 +41,6 @@ if [ "$OS" = "Darwin" ]; then
     bartender \
 whatsapp \
     appcleaner \
-    rectangle \
     google-chrome \
     1password \
     slack
@@ -52,7 +51,7 @@ if [ "$SETUP_MODE" = "work" ] && [ "$OS" = "Darwin" ]; then
 elif [ "$SETUP_MODE" = "home" ]; then
   brew install k9s k3sup helm fluxcd/tap/flux
   if [ "$OS" = "Darwin" ]; then
-    brew install --cask --adopt mqttx nordvpn openvpn-connect arq docker steam balenaetcher vlc sonos 1password-cli
+    brew install --cask --adopt mqttx nordvpn arq balenaetcher vlc sonos 1password-cli
   fi
 fi
 
